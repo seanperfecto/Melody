@@ -21,7 +21,7 @@
 ### Songs
 
 - `GET /api/songs`
-  - Notes index/search
+  - Songs index/search
 - `POST /api/songs`
 - `GET /api/songs/:id`
 - `PATCH /api/songs/:id`

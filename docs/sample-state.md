@@ -7,7 +7,7 @@
   forms: {
     signUp: {errors: []},
     logIn: {errors: []},
-    createNote: {errors: ["title can't be blank"]}
+    createSong: {errors: ["title can't be blank"]}
   },
   songs: {
     1: {
