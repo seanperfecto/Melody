@@ -1,7 +1,6 @@
 # Melody
 
-* [Heroku Link][heroku]
-[heroku]: http://www.herokuapp.com
+[Heroku Link]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
