@@ -32,8 +32,8 @@
 
 - A song's comments will be included in the song show template
 - `GET /api/comments`
-- `POST /api/songs/:song_id/comments`: add comment to song
-- `DELETE /api/songs/:song_id/comment/:comment_name`: removes comment from song
+- `POST /api/comments`: add comment to song
+- `DELETE /api/comment/:id`: removes comment from song
 
 **BONUS**
 ### Playlists

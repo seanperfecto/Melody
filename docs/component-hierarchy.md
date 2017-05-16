@@ -7,6 +7,11 @@
  - Home
  - Navbar
  - Footer
+  * Include MusicPlayContainer
+
+**MusicPlayerContainer**
+  -SongProgress
+  -SongDetail
 
 **SongsContainer**
  - SongsHeader
@@ -51,7 +56,7 @@
 | "/sign-in" | "AuthFormContainer" |
 | "/home" | "HomeContainer" |
 | "/home/song/:songId" | "SongsContainer" |
-| "/home/playlists/:playlistId/song/:songId" | "PlaylistContainer" |
+| "/home/playlists/:playlistId" | "PlaylistContainer" |
 | "/home/search-results" | "SearchResultsContainer" |
 | "/new-song" | "NewSongContainer" |
 | "/search" | "Search" |

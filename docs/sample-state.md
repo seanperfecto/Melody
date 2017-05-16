@@ -24,7 +24,21 @@
       song_id: 1,
       author_id: 2,
     }
+  },
+  playlists: {
+    1: {
+      title: "Playlist 1",
+      description: "Description 1",
+      artist_id: 1,
+      songs: { 1: {
+                    title: "Song 1",
+                    description: "Description 1",
+                    song_url: "./song1.mp3",
+                    genre: "pop",
+                    artist_id: 1
+                  }
+              }
+    }
   }
-  commentFilter: [1, 7, 14]
 }
 ```
