@@ -36,6 +36,7 @@
   background: transparent;
   margin: 10px 0;
   color: white;
+  width: 200px;
 }
 
 .login-form-container hr {
@@ -43,6 +44,7 @@
   background-color: #E3E5E1;
 }
 
+// Change placeholder font color
 .login-input::-webkit-input-placeholder {
   color: rgba(196, 196, 196, 0.5);
 }

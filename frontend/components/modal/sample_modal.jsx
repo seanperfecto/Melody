@@ -12,7 +12,7 @@ const customStyles = {
    backgroundColor   : 'rgba(170, 170, 170, .5)'
  },
   content : {
-    top                   : '20%',
+    top                   : '30%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
