@@ -1,16 +1,9 @@
 .hero {
   position: relative;
   height: 520px;
-  background-image: url('/assets/background.png');
+  background-image: url('http://res.cloudinary.com/dqr2mejhc/image/upload/v1495044835/hero_image-min_gkxomw.png');
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.hero h1 {
-  padding: 100px 0;
-  font-size: 100px;
-  text-align: center;
-  color: white;
 }
 
 svg {
@@ -23,4 +16,35 @@ svg {
 
 div::after polygon {
   fill: black;
+}
+
+.tagline {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white;
+  position: absolute;
+  left: 50%;
+  margin-top: 80px;
+  padding-right: 10px;
+}
+
+.tagline h1 {
+  font-size: 32px;
+}
+
+.tagline h2 {
+  margin: 10px 0 20px 0;
+  font-size: 15px;
+}
+
+.explore-link {
+  text-decoration: none;
+  color: #E3E5E1;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid #E3E5E1;
+}
+
+.explore-link:hover {
+  color: white;
 }

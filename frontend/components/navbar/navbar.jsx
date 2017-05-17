@@ -11,7 +11,7 @@ class NavBar extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.requestSignin({username: "GuestUser", password: "password"});
+    this.props.requestSignin({username: "guestuser", password: "password"});
   }
 
   handleSignout(e){
