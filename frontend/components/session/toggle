@@ -1,0 +1,9 @@
+navLink() {
+  if (this.state.type === 'signin') {
+    return <button onClick={this.toggleModal}>
+        Don't have an account? Sign up!</button>;
+  } else {
+    return <button onClick={this.toggleModal}>
+        Already have an account? Sign in!</button>;
+  }
+}

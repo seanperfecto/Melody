@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SampleModal from '../modal/sample_modal';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class NavBar extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.requestSignin({username: "demo", password: "password"});
+    this.props.requestSignin({username: "GuestUser", password: "password"});
   }
 
   handleSignout(e){
@@ -21,8 +22,9 @@ class NavBar extends React.Component {
   render(){
     if (this.props.currentUser) {
       return(
-        <div className="header-group">
-          <h2 className="header-name">{this.props.currentUser.username}</h2>
+        <div className="loggedin-group">
+          <button className="header-button">
+            {this.props.currentUser.username}</button>
           <button className="header-button"
             onClick={this.handleSignout}>Sign Out</button>
         </div>
@@ -31,10 +33,11 @@ class NavBar extends React.Component {
 
     else {
       return(
-        <nav className="signin-signout-links">
-          <button onClick={this.handleSubmit}>Demo</button>
-          <Link to="/signin"><button>Sign In</button></Link>
-          <Link to="/signup"><button>Sign Up</button></Link>
+        <nav className="signin-links">
+          <button className="header-button"
+            onClick={this.handleSubmit}>Demo Log In</button>
+          <SampleModal type="signin"/>
+          <SampleModal type="signup"/>
         </nav>
       );
     }

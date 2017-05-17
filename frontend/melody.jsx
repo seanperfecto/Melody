@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
-import * as Action from './actions/session_actions';
 import configureStore from './store/store';
-
-window.requestSignin = Action.requestSignin;
-window.requestSignup = Action.requestSignup;
-window.requestSignout = Action.requestSignout;
+import Modal from 'react-modal';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -18,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   store = configureStore();
   }
 
-  window.store = store;
   const root = document.getElementById('root');
+  Modal.setAppElement(document.body);
   ReactDOM.render(<Root store={ store }/>, root);
 });
