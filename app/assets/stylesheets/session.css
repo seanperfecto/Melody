@@ -1,12 +1,12 @@
 .login-form-container {
   background-color: #6b6b6b;
-  padding: 3px 30px 30px 30px;
+  padding: 30px 30px 30px 30px;
   color: white;
 }
 
+
 .login-form-container a {
   color: white;
-  margin-top: 10px;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
@@ -18,9 +18,16 @@
   border: 1px solid #DB5555;
   background-color: #DB5555;
   color: white;
-  margin: 10px 0;
+  margin-top: 10px;
   width: 200px;
   cursor: pointer;
+}
+
+.bottom-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-input {
@@ -42,4 +49,13 @@
 
 i {
   width: 25px;
+}
+
+.login-form-container li {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #DB5555;
+}
+.login-form-container li:last-child {
+  margin-bottom: 15px;
 }

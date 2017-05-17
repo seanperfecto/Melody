@@ -31,7 +31,8 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const newType = this.state.type === 'signin' ? 'signup' : 'signin';
     console.log(newType);
-    this.setState({type: newType});
+    this.setState({type: newType, email: "", username: "", password: "" });
+    this.props.clearErrors();
   }
 
   navLink() {
@@ -74,9 +75,7 @@ class SessionForm extends React.Component {
     return(
       <div className="login-form-container">
        <form onSubmit={this.handleSubmit} className="login-form-box">
-         {this.renderErrors()}
          <div className="login-form">
-           <br/>
            { email }
             <i className="fa fa-user" aria-hidden="true"></i>
              <input className="login-input" type="text"
@@ -94,8 +93,12 @@ class SessionForm extends React.Component {
                placeholder="password"
              />
            <hr/>
-           <input className="session-submit" type="submit" value={submitName} /><br/>
-           {this.navLink()}
+           <div className='bottom-links'>
+             <input className="session-submit"
+               type="submit" value={submitName} /><br/>
+             {this.renderErrors()}
+             {this.navLink()}
+           </div>
          </div>
        </form>
      </div>

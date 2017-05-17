@@ -1,0 +1,26 @@
+.hero {
+  position: relative;
+  height: 500px;
+  background-image: url('/assets/hero.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero h1 {
+  padding: 100px 0;
+  font: 100px "COMIC SANS";
+  text-align: center;
+  color: white;
+}
+
+svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 12vw;
+  /* set height to pixels if you want angle to change with screen width */
+}
+
+div::after polygon {
+  fill: black;
+}

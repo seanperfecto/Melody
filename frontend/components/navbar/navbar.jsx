@@ -36,8 +36,8 @@ class NavBar extends React.Component {
         <nav className="signin-links">
           <button className="header-button"
             onClick={this.handleSubmit}>Demo Log In</button>
-          <SampleModal type="signin"/>
-          <SampleModal type="signup"/>
+          <SampleModal clearErrors={this.props.clearErrors} type="signin"/>
+          <SampleModal clearErrors={this.props.clearErrors} type="signup"/>
         </nav>
       );
     }

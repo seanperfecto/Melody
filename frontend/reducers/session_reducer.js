@@ -1,5 +1,6 @@
 import { RECEIVE_ERRORS,
-         RECEIVE_CURRENT_USER } from '../actions/session_actions';
+         RECEIVE_CURRENT_USER,
+         CLEAR_ERRORS } from '../actions/session_actions';
 
 
 
@@ -19,6 +20,8 @@ const sessionReducer = (state = _initialState, action) => {
     case RECEIVE_ERRORS:
       const errors = {errors: action.errors};
       return Object.assign({}, state, errors);
+    case CLEAR_ERRORS:
+      return Object.assign({}, _initialState);
     default:
       return state;
   }

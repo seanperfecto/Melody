@@ -39,6 +39,7 @@ class SampleModal extends React.Component {
 
   closeModal() {
     this.setState({ modalOpen: false });
+    this.props.clearErrors();
   }
 
   openModal() {
