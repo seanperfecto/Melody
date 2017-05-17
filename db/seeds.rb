@@ -7,3 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user1 = User.create({email: 'guestuser@gmail.com', username: 'guestuser', password: 'password'})
+user2 = User.create({email: 'kobe@gmail.com', username: 'kobe', password: 'password'})
+user3 = User.create({email: 'shaq@gmail.com', username: 'shaq', password: 'password'})
+user4 = User.create({email: 'phil@gmail.com', username: 'phil', password: 'password'})
+
+song1 = Song.create({title: "Caribou - Can't Do Without You",
+                     description: "Love this song",
+                     user_id: 1})

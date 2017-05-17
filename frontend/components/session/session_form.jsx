@@ -30,7 +30,6 @@ class SessionForm extends React.Component {
   toggleModal(e) {
     e.preventDefault();
     const newType = this.state.type === 'signin' ? 'signup' : 'signin';
-    console.log(newType);
     this.setState({type: newType, email: "", username: "", password: "" });
     this.props.clearErrors();
   }
@@ -57,7 +56,6 @@ class SessionForm extends React.Component {
 
   render(){
     let email;
-    console.log(this.props);
     if (this.state.type === "signup") {
       email = (
         <label>
