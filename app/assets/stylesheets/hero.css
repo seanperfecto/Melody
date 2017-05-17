@@ -1,14 +1,14 @@
 .hero {
   position: relative;
-  height: 500px;
-  background-image: url('/assets/hero.jpg');
+  height: 520px;
+  background-image: url('/assets/background.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .hero h1 {
   padding: 100px 0;
-  font: 100px "COMIC SANS";
+  font-size: 100px;
   text-align: center;
   color: white;
 }

@@ -2,7 +2,6 @@ header {
  display: flex;
  height:50px;
  background:#6b6b6b;
- border:1px solid #CCC;
  width: 100%;
  flex-direction: row;
  justify-content: space-between;
