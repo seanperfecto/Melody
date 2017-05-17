@@ -1,6 +1,6 @@
 header {
  display: flex;
- height:50px;
+ height:45px;
  background:#6b6b6b;
  width: 100%;
  flex-direction: row;
@@ -14,16 +14,17 @@ header {
 
 .header-button {
   background-color: inherit;
-  border: none;
+  border: 0;
   width: 90px;
   height: 50px;
-  color: white;
+  color: #E3E5E1;
   font-size: 13px;
   cursor: pointer;
 }
 
 .header-button:hover {
-  background-color: #8c8c8c;
+  color: white;
+  text-decoration: underline;
 }
 
 .header-button:focus {
@@ -33,17 +34,22 @@ header {
 .header-logo {
   display: flex;
   align-items: center;
-  margin-left: 10px;
 }
 
-.header-link {
-  margin-left: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-}
 
 .loggedin-group {
   display: flex;
   align-items: center;
+}
+
+.header-link-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  margin: 0 15px;
+  color: #E3E5E1;
+  text-decoration: none;
+}
+
+.header-link-name:hover {
+  color: white;
 }
