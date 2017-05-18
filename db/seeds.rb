@@ -12,5 +12,5 @@ user3 = User.create({email: 'shaq@gmail.com', username: 'shaq', password: 'passw
 user4 = User.create({email: 'phil@gmail.com', username: 'phil', password: 'password'})
 
 song1 = Song.create({title: "Caribou - Can't Do Without You",
-                     description: "Love this song",
+                     description: "This song fire",
                      user_id: 1})
