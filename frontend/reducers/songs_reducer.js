@@ -5,7 +5,7 @@ import { RECEIVE_SONGS,
          CLEAR_SONG_ERRORS } from '../actions/song_actions';
 
 const _initialState = {
- song: null,
+ songs: null,
  errors: []
 };
 
@@ -15,14 +15,9 @@ const songsReducer = (state = _initialState, action) => {
 
   switch (action.type) {
     case RECEIVE_SONGS:
-      nextState = {};
-      action.songs.forEach(song => {
-        nextState[song.id] = song;
-      });
-      return nextState;
+      return {songs: action.songs, errors: []};
     case RECEIVE_SONG:
-      const newSong = {[action.song.id]: action.song};
-      return Object.assign({}, state, newSong);
+      return action.song;
     case REMOVE_SONG:
       nextState = Object.assign({}, state);
       delete nextState[action.song.id];
