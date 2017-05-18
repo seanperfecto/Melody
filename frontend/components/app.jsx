@@ -13,10 +13,10 @@ const App = () => (
       <NavbarContainer />
     </header>
     <Route exact path="/" component={ HeroHeader } />
-    <Route exact path="/" component={ SplashPageContainer }  />
   </div>
 );
 
 export default App;
 
+// <Route exact path="/" component={ SplashPageContainer }  />
 // <Route exact path='/' component={ SongIndexContainer } />
