@@ -36,8 +36,16 @@ table {
 body {
   background-color: #E3E5E1;
   font-family: 'Roboto', sans-serif;
+  color: #111111;
+  height: 100%;
 }
 
 button, input {
   font-family: inherit;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

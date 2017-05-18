@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SampleModal from '../modal/sample_modal';
 
 class NavBar extends React.Component {
@@ -11,12 +11,14 @@ class NavBar extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.requestSignin({username: "guestuser", password: "password"});
+    this.props.requestSignin({username: "guestuser", password: "password"})
+    .then(data => this.props.history.push(`/discover`));
   }
 
   handleSignout(e){
     e.preventDefault();
-    this.props.requestSignout();
+    this.props.requestSignout()
+      .then(data => this.props.history.push(`/`));
   }
 
   render(){
@@ -44,4 +46,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

@@ -1,0 +1,14 @@
+.splash {
+  max-width: 900px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.splash h2 {
+  font-size: 50px;
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 600;
+  text-align: center;
+}
