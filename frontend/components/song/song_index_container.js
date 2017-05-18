@@ -5,7 +5,6 @@ import { fetchSongs, createSong, updateSong, deleteSong }
   from '../../actions/song_actions';
 import { allSongs } from '../../reducers/selectors';
 
-const _nullState = {songs: {}};
 
 const mapStateToProps = (state) => {
   return ({
