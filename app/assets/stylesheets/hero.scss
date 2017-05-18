@@ -4,6 +4,7 @@
   background-image: url('http://res.cloudinary.com/dqr2mejhc/image/upload/v1495044835/hero_image-min_gkxomw.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 svg {
@@ -55,4 +56,22 @@ div::after polygon {
     .tagline {
         left: 12%;
     }
+    .hero {
+      height: 400px;
+      background-attachment: none;
+    }
+    .header-link-name {
+      font-size: 12px;
+    }
+}
+
+//CSS for splash button
+.splash-button {
+  background-color: black;
+  border: 0;
+  width: 90px;
+  height: 50px;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
 }

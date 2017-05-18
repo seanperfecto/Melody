@@ -47,10 +47,30 @@ class SampleModal extends React.Component {
   }
 
   render() {
-    const buttonName = this.props.type === "signin" ? "Log In" : "Sign Up";
+    let buttonName;
+    let buttonType;
+    if (this.props.type === "signin") {
+      buttonName = "Log In";
+      buttonType = (
+        <button className="header-button"
+          onClick={this.openModal}>{buttonName}</button>
+      );
+    } else if (this.props.type === "signup") {
+      buttonName = "Sign Up";
+      buttonType = (
+        <button className="header-button"
+          onClick={this.openModal}>{buttonName}</button>
+      );
+    } else {
+      buttonName = "Create an Account";
+      buttonType = (
+        <button className="splash-button"
+          onClick={this.openModal}>{buttonName}</button>
+      );
+    }
     return(
       <div>
-      <button className="header-button" onClick={this.openModal}>{buttonName}</button>
+      { buttonType }
 
       <Modal
         isOpen={this.state.modalOpen}
