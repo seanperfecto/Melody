@@ -80,7 +80,7 @@ class SampleModal extends React.Component {
 
           <SessionFormContainer type={this.props.type} />
       </Modal>
-    </div>
+  </div>
     );
   }
 }
