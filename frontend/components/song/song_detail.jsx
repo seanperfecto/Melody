@@ -30,7 +30,8 @@ class SongDetail extends React.Component {
               <Link to={`/user/${song.user_id}`}>{song.user.username}</Link>
               <h1>{song.title}</h1>
               <h6>Description: {song.description}</h6>
-              <h2>P L A Y <i className="fa fa-play-circle-o"></i></h2>
+              <h2>P L A Y <i className="fa fa-play-circle-o"></i>
+              </h2>
             </div>
           </div>
         </section>
