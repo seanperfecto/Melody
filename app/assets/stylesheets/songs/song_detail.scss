@@ -34,6 +34,7 @@
 .song-detail-album-image {
   width: 375px;
   height: 375px;
+  object-fit: cover;
   margin: 0 20px;
 }
 
@@ -78,4 +79,8 @@
   font-family: 'Oswald', sans-serif;
   margin: 10px 0;
   font-size: 35px;
+}
+
+hr {
+  max-width: 1200px;
 }
