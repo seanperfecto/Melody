@@ -7,7 +7,7 @@ import { fetchSong, updateSong, deleteSong }
 
 const mapStateToProps = (state) => {
   return ({
-
+    song: state.songDetail
 });
 };
 

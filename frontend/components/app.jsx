@@ -22,6 +22,7 @@ const App = () => (
       <Route exact path="/" component={ HeroHeader } />
       <Route exact path="/" component={ SplashPageContainer }  />
       <Route exact path="/discover" component={ DiscoverContainer }  />
+      <Route exact path="/song/:songId" component={ SongDetailContainer }  />
     </div>
     <footer>
       <FooterInfo />

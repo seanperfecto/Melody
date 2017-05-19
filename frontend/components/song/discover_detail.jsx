@@ -16,7 +16,6 @@ class DiscoverDetail extends React.Component {
 
   render(){
     const { song } = this.props;
-    console.log(song);
     return(
       <li className="discover-detail">
         <img src={song.image_url} alt={song.title} /><br />

@@ -51,12 +51,12 @@ export const updateSong = song => dispatch => {
     error => dispatch(songErrors(error.responseJSON));
 };
 
-export const createSong = song => dispatch => (
-  SongApiUtil.createSong(song).then(_song => (
+export const createSong = song => dispatch => {
+  return SongApiUtil.createSong(song).then(_song => (
     dispatch(receiveSong(_song)),
     error => dispatch(songErrors(error.responseJSON))
-  ))
-);
+  ));
+};
 
 export const deleteSong = id => dispatch => (
   SongApiUtil.deleteSong(id).then(() => (

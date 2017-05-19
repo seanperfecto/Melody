@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import SampleModal from '../modal/sample_modal';
+import AuthModal from '../modal/auth_modal';
+import UploadModal from '../modal/upload_modal';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class NavBar extends React.Component {
     if (this.props.currentUser) {
       return(
         <div className="loggedin-group">
+          <UploadModal user={this.props.currentUser.id}/>
           <button className="header-button">
             {this.props.currentUser.username}</button>
           <button className="header-button"
@@ -38,8 +40,8 @@ class NavBar extends React.Component {
         <nav className="signin-links">
           <button className="header-button"
             onClick={this.handleSubmit}>Demo Log In</button>
-          <SampleModal clearErrors={this.props.clearErrors} type="signin"/>
-          <SampleModal clearErrors={this.props.clearErrors} type="signup"/>
+          <AuthModal clearErrors={this.props.clearErrors} type="signin"/>
+          <AuthModal clearErrors={this.props.clearErrors} type="signup"/>
         </nav>
       );
     }

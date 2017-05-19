@@ -16,3 +16,4 @@ song_a = Song.create({title: "dyalla - Lush",
                      user_id: 3,
                      image: File.new("#{Rails.root}/app/assets/images/lush.jpeg"),
                      track: File.new("#{Rails.root}/app/assets/music/Lush.mp3")})
+                     
