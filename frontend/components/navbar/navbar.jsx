@@ -12,7 +12,7 @@ class NavBar extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.requestSignin({username: "guestuser", password: "password"})
-    .then(data => this.props.history.push(`/discover`));
+    .then(data => this.props.history.push(`/home`));
   }
 
   handleSignout(e){

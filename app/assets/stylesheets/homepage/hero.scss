@@ -61,7 +61,10 @@ div::after polygon {
       background-attachment: none;
     }
     .header-link-name {
-      font-size: 12px;
+      display: none;
+    }
+    .header-link {
+      margin-left: 10px;
     }
 }
 

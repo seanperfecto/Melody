@@ -11,6 +11,8 @@ user2 = User.create({email: 'kobe@gmail.com', username: 'kobe', password: 'passw
 user3 = User.create({email: 'shaq@gmail.com', username: 'shaq', password: 'password'})
 user4 = User.create({email: 'phil@gmail.com', username: 'phil', password: 'password'})
 
-song1 = Song.create({title: "Caribou - Can't Do Without You",
-                     description: "This song fire",
-                     user_id: 1})
+song_a = Song.create({title: "dyalla - Lush",
+                     description: "Chill vibes for a chill night.",
+                     user_id: 3,
+                     image: File.new("#{Rails.root}/app/assets/images/lush.jpeg"),
+                     track: File.new("#{Rails.root}/app/assets/music/Lush.mp3")})

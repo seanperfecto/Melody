@@ -10,17 +10,10 @@ class SongIndex extends React.Component {
   }
 
   render(){
-    let songList;
-
-    if (this.props.songs) {
-    const { songs } = this.props;
-    songList = songs.map((song, idx) => (<li key={idx}>{song.title}</li>));
-    }
 
     return(
-      <div>
+      <div className='discover-page'>
         THIS NOT GONNA WORK.
-        { songList } 
       </div>
     );
   }

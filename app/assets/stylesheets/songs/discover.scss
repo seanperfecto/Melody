@@ -1,0 +1,72 @@
+.discover-page {
+  padding: 35px 5px 0 5px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.discover-detail {
+  margin: 20px 20px;
+}
+
+.discover-page h1 {
+  font-size: 48px;
+  font-family: 'Permanent Marker', cursive;
+  color: #DB5555;
+}
+
+.discover-page p {
+  font-size: 20px;
+  padding: 5px 0;
+}
+
+.discover-page h1:hover {
+  color: #111111;
+}
+
+.discover-detail img {
+  width: 220px;
+}
+
+.discover-detail a {
+  text-decoration: none;
+}
+
+.discover-detail a:active {
+  color: inherit;
+}
+
+.discover-title {
+  font-size: 15px;
+}
+
+a.discover-title {
+  color: #111111;
+}
+
+a.discover-title:visited {
+  color: #111111;
+}
+
+a.discover-title:hover {
+  color: #606060;
+}
+
+.discover-artist {
+  font-size: 12px;
+  color: #DB5555;
+}
+
+a.discover-artist:visited {
+  color: #DB5555;
+}
+
+a.discover-artist:hover {
+  color: #af4444;
+}
+
+.discover-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
