@@ -58,7 +58,7 @@ class UploadModal extends React.Component {
         style={customStyles}
         contentLabel="Auth Modal">
 
-          <SongFormContainer user={this.props.id} />
+          <SongFormContainer closeModal={this.closeModal} user={this.props.id} />
       </Modal>
   </div>
     );

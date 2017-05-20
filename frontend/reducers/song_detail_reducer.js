@@ -30,9 +30,7 @@ const songDetailReducer = (state = defaultSong, action) => {
       return Object.assign({}, state, errors);
     case CLEAR_SONG_ERRORS:
       const clearErrors = {errors: action.errors};
-      const help = Object.assign({}, state, clearErrors);
-      console.log(help);
-      return help;
+      return Object.assign({}, state, clearErrors);
     default:
       return state;
   }

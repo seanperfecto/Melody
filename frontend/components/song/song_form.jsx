@@ -34,7 +34,6 @@ class SongForm extends React.Component {
     fileReader.onloadend = () => {
       this.setState({ image: file, imageUrl: fileReader.result });
     };
-    console.log(this.state.imageUrl);
     if (file) {
       fileReader.readAsDataURL(file);
     }
@@ -61,7 +60,10 @@ class SongForm extends React.Component {
     formData.append("song[image]", this.state.image);
     formData.append("song[track]", this.state.track);
     this.props.createSong(formData)
-      .then(data => this.props.history.push(`/song/${this.state.user_id}`));
+      .then(this.setState({ title: '' }))
+      .then(data => {
+        this.props.history.push(`/song/${data.song.id}`);
+      }).then(() => this.props.closeModal());
   }
 
   render(){
@@ -94,7 +96,7 @@ class SongForm extends React.Component {
             <p>Choose Song:</p> <input className="file-button"
             type="file" onChange={this.updateTrack}/>
             <hr />
-            <button onClick={this.handleSubmit}>Upload Song!</button>
+            <button disabled={!this.state.title} onClick={this.handleSubmit}>Upload Song!</button>
           </div>
         </form>
       </section>

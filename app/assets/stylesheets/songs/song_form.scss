@@ -17,6 +17,13 @@
   font-size: 14px;
 }
 
+.song-form button:disabled {
+  outline: 1px solid #CF9090;
+  border: 1px solid #CF9090;
+  background-color: #CF9090;
+  cursor: not-allowed;
+}
+
 
 .song-input, .song-description {
   outline: none;

@@ -29,7 +29,7 @@ class SongDetail extends React.Component {
     e.preventDefault();
     var result = confirm("Are you sure you want to delete?");
     if (result) {
-      this.props.deleteSong(this.props.song.user_id)
+      this.props.deleteSong(this.props.song.id)
         .then(data => this.props.history.push(`/discover`));
     }
   }

@@ -10,8 +10,9 @@ const mapStateToProps = (state, ownProps) => ({
   errors: state.songDetail.errors
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   createSong: song => dispatch(createSong(song)),
+  closeModal: () => ownProps.closeModal()
 });
 
 export default connect(
