@@ -19,11 +19,6 @@ const songsReducer = (state = _initialState, action) => {
       nextState = Object.assign({}, state);
       delete nextState[action.song.id];
       return nextState;
-    case SONG_ERRORS:
-      const errors = {errors: action.errors};
-      return Object.assign({}, state, errors);
-    case CLEAR_SONG_ERRORS:
-      return Object.assign({}, _initialState);
     default:
       return state;
   }

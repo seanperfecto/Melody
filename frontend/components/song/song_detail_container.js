@@ -7,7 +7,8 @@ import { fetchSong, updateSong, deleteSong }
 
 const mapStateToProps = (state) => {
   return ({
-    song: state.songDetail
+    song: state.songDetail,
+    currentUserId: state.session.currentUser.id
 });
 };
 

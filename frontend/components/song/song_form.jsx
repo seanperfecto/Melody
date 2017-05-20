@@ -5,8 +5,9 @@ class SongForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {title: '', description: '', image: null,
-      imageUrl: null, track: null, user_id: this.props.id};
+    this.state = {title: '', description: '', image: '',
+      imageUrl: 'http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_1262/v1495044542/melody_logo3_q3qjg9.png',
+      track: '', user_id: this.props.id};
     this.update = this.update.bind(this);
     this.updateImage = this.updateImage.bind(this);
     this.updateTrack = this.updateTrack.bind(this);
@@ -17,7 +18,7 @@ class SongForm extends React.Component {
    return e => this.setState({ [property]: e.target.value });
   }
 
-  errors() {
+  renderErrors() {
     if (this.props.errors) {
       return (
         this.props.errors.map(error => {
@@ -33,7 +34,7 @@ class SongForm extends React.Component {
     fileReader.onloadend = () => {
       this.setState({ image: file, imageUrl: fileReader.result });
     };
-
+    console.log(this.state.imageUrl);
     if (file) {
       fileReader.readAsDataURL(file);
     }
@@ -60,28 +61,41 @@ class SongForm extends React.Component {
     formData.append("song[image]", this.state.image);
     formData.append("song[track]", this.state.track);
     this.props.createSong(formData)
-      .then(data => this.props.history.push(`/song/${data.id}`));
+      .then(data => this.props.history.push(`/song/${this.state.user_id}`));
   }
 
   render(){
+
     return(
       <section className='song-form-container'>
+        {this.renderErrors()}
         <form className="song-form">
-          <input
-                type="text"
-                value={this.state.title}
-                placeholder="Title"
-                onChange={this.update('title')}
-              />
-          <input
-                type="description"
-                value={this.state.description}
-                placeholder="Description"
-                onChange={this.update('description')}
-              />
-          <input type="file" onChange={this.updateImage}/>
-          <input type="file" onChange={this.updateTrack}/>
-          <button onClick={this.handleSubmit}>Submit</button>
+          <div className='song-form-left'>
+            <img src={this.state.imageUrl}
+               alt="album-art" />
+            <br />
+            <input type="file" onChange={this.updateImage}/>
+          </div>
+          <div className='song-form-right'>
+            <input
+                  type="text"
+                  value={this.state.title}
+                  placeholder="Title"
+                  onChange={this.update('title')}
+                  className="song-input"
+                />
+              <hr />
+            <textarea placeholder="Description"
+              value={this.state.description}
+              onChange={this.update('description')}
+              className="song-description"
+              cols="40" rows="5"></textarea>
+              <hr />
+            <p>Choose Song:</p> <input className="file-button"
+            type="file" onChange={this.updateTrack}/>
+            <hr />
+            <button onClick={this.handleSubmit}>Upload Song!</button>
+          </div>
         </form>
       </section>
     );

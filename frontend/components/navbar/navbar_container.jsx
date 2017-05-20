@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { requestSignout, requestSignin, clearErrors } from '../../actions/session_actions';
+import { clearSongErrors } from '../../actions/song_actions';
 import NavBar from './navbar';
 
 const mapStateToProps = ({ session }) => ({
@@ -9,7 +10,8 @@ const mapStateToProps = ({ session }) => ({
 const mapDispatchToProps = dispatch => ({
   requestSignout: () => dispatch(requestSignout()),
   requestSignin: (user) => dispatch(requestSignin(user)),
-  clearErrors: () => dispatch(clearErrors())
+  clearErrors: () => dispatch(clearErrors()),
+  clearSongErrors: () => dispatch(clearSongErrors())
 });
 
 export default connect(

@@ -39,6 +39,7 @@ class UploadModal extends React.Component {
 
   closeModal() {
     this.setState({ modalOpen: false });
+    this.props.clearSongErrors();
   }
 
   openModal() {

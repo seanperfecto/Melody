@@ -4,21 +4,44 @@ import { Link, withRouter } from 'react-router-dom';
 class SongDetail extends React.Component {
   constructor(props){
     super(props);
+    this.confirmDelete = this.confirmDelete.bind(this);
   }
 
   componentDidMount(){
-    this.props.fetchSong(parseInt(this.props.match.params.songId));
+    this.props.fetchSong(parseInt(this.props.match.params.songId))
+    .then(()=> {
+      document.title = `Melody | ${this.props.song.title}`;
+    });
+  }
+
+  componentWillUnmount() {
+    document.title = "Melody";
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.songId !== nextProps.match.params.songId) {
       this.props.fetchSong(parseInt(nextProps.match.params.songId));
+      document.title = `Melody | ${nextProps.title}`;
+    }
+  }
+
+  confirmDelete(e){
+    e.preventDefault();
+    var result = confirm("Are you sure you want to delete?");
+    if (result) {
+      this.props.deleteSong(this.props.song.user_id)
+        .then(data => this.props.history.push(`/discover`));
     }
   }
 
   render() {
-    console.log(this.props);
-    const { song } = this.props;
+    const { song, currentUserId } = this.props;
+    let editButton, deleteButton;
+    if ( currentUserId === song.user_id ) {
+      editButton = <button className='detail-ed-button'>Edit Button</button>;
+      deleteButton = <button className='detail-ed-button'
+        onClick={this.confirmDelete}>Delete Button</button>;
+    }
     return (
       <div>
         <div className="header-bg"></div>
@@ -31,7 +54,9 @@ class SongDetail extends React.Component {
               <h1>{song.title}</h1>
               <h6>Description: {song.description}</h6>
               <h2>P L A Y <i className="fa fa-play-circle-o"></i>
-              </h2>
+              </h2><br />
+              { editButton }
+              { deleteButton }
             </div>
           </div>
         </section>

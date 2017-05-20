@@ -56,3 +56,24 @@ button, input {
 main {
   height: 100%;
 }
+
+input[type="text"]{
+  font-size: 14px;
+}
+
+input[type="password"] {
+  font-size: 14px;
+}
+
+input[type="file"] {
+  font-size: 14px;
+}
+
+input[type="submit"] {
+  font-size: 14px;
+}
+
+textarea {
+  font-size: 14px;
+  resize: none;
+}

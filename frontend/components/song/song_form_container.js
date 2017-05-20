@@ -6,7 +6,8 @@ import { createSong }
 
 
 const mapStateToProps = (state, ownProps) => ({
-  id: state.session.currentUser.id
+  id: state.session.currentUser.id,
+  errors: state.songDetail.errors
 });
 
 const mapDispatchToProps = dispatch => ({

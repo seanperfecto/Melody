@@ -1,0 +1,63 @@
+.song-form-container {
+  background-color: #6b6b6b;
+  padding: 30px 30px 30px 30px;
+  color: white;
+}
+
+
+
+.song-form button {
+  outline: 1px solid #DB5555;
+  border: 1px solid #DB5555;
+  background-color: #DB5555;
+  color: white;
+  margin-top: 10px;
+  width: 400px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.song-input, .song-description {
+  outline: none;
+	border: 0;
+  background: transparent;
+  margin: 10px 0;
+  color: white;
+  width: 300px;
+}
+
+
+.song-form-container hr {
+  color: #E3E5E1;
+  background-color: #E3E5E1;
+}
+
+// Changes placeholder font color
+.song-input::-webkit-input-placeholder {
+  color: rgba(196, 196, 196, 0.5);
+}
+
+textarea::-webkit-input-placeholder {
+  color: rgba(196, 196, 196, 0.5);
+}
+
+.song-form {
+  display: flex;
+  justify-content: center;
+}
+
+.song-form-left img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.file-button {
+  margin-top: 6px;
+}
+
+
+.song-form-right p {
+  color: rgba(196, 196, 196, 0.5);
+}

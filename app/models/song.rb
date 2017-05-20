@@ -1,5 +1,6 @@
 class Song < ApplicationRecord
-  validates :title, :user_id, presence: true
+  validates :title, :user_id, :image, :track, presence: true
+  validates :title, length: {maximum: 50, allow_nil: true}
 
   has_attached_file :image, presence: true
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/

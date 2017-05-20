@@ -22,10 +22,13 @@ export const removeSong = song => ({
   song
 });
 
-export const songErrors = errors => ({
-  type: SONG_ERRORS,
-  errors
-});
+export const songErrors = errors => {
+  console.log(errors);
+  return ({
+    type: SONG_ERRORS,
+    errors
+  });
+};
 
 export const clearSongErrors = () => ({
   type: CLEAR_SONG_ERRORS,
@@ -52,14 +55,14 @@ export const updateSong = song => dispatch => {
 };
 
 export const createSong = song => dispatch => {
-  return SongApiUtil.createSong(song).then(_song => (
+  return SongApiUtil.createSong(song).then(_song =>
     dispatch(receiveSong(_song)),
     error => dispatch(songErrors(error.responseJSON))
-  ));
+  );
 };
 
 export const deleteSong = id => dispatch => (
-  SongApiUtil.deleteSong(id).then(() => (
-    dispatch(receiveSong(null))
+  SongApiUtil.deleteSong(id).then((song) => (
+    dispatch(removeSong(song))
   ))
 );
