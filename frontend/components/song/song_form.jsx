@@ -62,14 +62,18 @@ class SongForm extends React.Component {
     formData.append("song[description]", this.state.description);
     formData.append("song[user_id]", this.state.user_id);
     formData.append("song[image]", this.state.image || this.state.image_url);
-    formData.append("song[track]", this.state.track || this.state.track_url);
+    if (this.state.track_url) {
+      formData.append("song[track]", this.state.track_url);
+    } else{
+      formData.append("song[track]", this.state.track);
+    }
 
     if (this.props.type === "upload") {
       this.props.createSong(formData)
-        .then(this.setState({ title: '' }))
-        .then(data => {
-          this.props.history.push(`/song/${data.song.id}`);
-        }).then(() => this.props.closeModal());
+      .then(this.setState({ title: '' }))
+      .then(data => {
+        this.props.history.push(`/song/${data.song.id}`);
+      }).then(() => this.props.closeModal());
     } else {
       this.props.updateSong(this.state.id, formData)
       .then(this.setState({ title: '' }))

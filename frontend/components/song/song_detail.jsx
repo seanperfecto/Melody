@@ -42,8 +42,7 @@ class SongDetail extends React.Component {
       editButton = <UploadModal song={this.props.song}
         clearSongErrors={this.props.clearSongErrors}
         type="edit"/>;
-      deleteButton = <button className='detail-ed-button'
-        onClick={this.confirmDelete}>Delete Button</button>;
+      deleteButton = <button className='detail-ed-button' onClick={this.confirmDelete}>Delete Song</button>;
     }
     return (
       <div>

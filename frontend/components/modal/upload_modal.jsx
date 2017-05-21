@@ -52,7 +52,7 @@ class UploadModal extends React.Component {
       buttonName = <button className="header-button"
         onClick={this.openModal}>Upload</button>;
     } else if (this.props.type === "edit") {
-      buttonName = <button className="detail-ed-button"
+      buttonName = <button id="edit-button" className="detail-ed-button"
         onClick={this.openModal}>Edit Song</button>;
     }
     return(
