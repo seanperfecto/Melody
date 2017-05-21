@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SongForm from './song_form';
 
-import { createSong }
+import { createSong, updateSong }
   from '../../actions/song_actions';
 
 
@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   createSong: song => dispatch(createSong(song)),
-  closeModal: () => ownProps.closeModal()
+  closeModal: () => ownProps.closeModal(),
+  updateSong: (songId, song) => dispatch(updateSong(songId, song))
 });
 
 export default connect(

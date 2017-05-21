@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import UploadModal from '../modal/upload_modal';
 
 class SongDetail extends React.Component {
   constructor(props){
@@ -38,7 +39,9 @@ class SongDetail extends React.Component {
     const { song, currentUserId } = this.props;
     let editButton, deleteButton;
     if ( currentUserId === song.user_id ) {
-      editButton = <button className='detail-ed-button'>Edit Button</button>;
+      editButton = <UploadModal song={this.props.song}
+        clearSongErrors={this.props.clearSongErrors}
+        type="edit"/>;
       deleteButton = <button className='detail-ed-button'
         onClick={this.confirmDelete}>Delete Button</button>;
     }

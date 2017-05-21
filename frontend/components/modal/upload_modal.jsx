@@ -47,10 +47,17 @@ class UploadModal extends React.Component {
   }
 
   render() {
+    let buttonName;
+    if (this.props.type === "upload") {
+      buttonName = <button className="header-button"
+        onClick={this.openModal}>Upload</button>;
+    } else if (this.props.type === "edit") {
+      buttonName = <button className="detail-ed-button"
+        onClick={this.openModal}>Edit Song</button>;
+    }
     return(
       <div>
-        <button className="header-button"
-          onClick={this.openModal}>Upload</button>
+        { buttonName }
 
       <Modal
         isOpen={this.state.modalOpen}
@@ -58,7 +65,10 @@ class UploadModal extends React.Component {
         style={customStyles}
         contentLabel="Auth Modal">
 
-          <SongFormContainer closeModal={this.closeModal} user={this.props.id} />
+          <SongFormContainer type={this.props.type}
+                             song={this.props.song}
+                             closeModal={this.closeModal}
+                             user={this.props.id} />
       </Modal>
   </div>
     );

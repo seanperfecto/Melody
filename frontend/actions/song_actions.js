@@ -48,10 +48,11 @@ export const fetchSong = id => dispatch => (
   ))
 );
 
-export const updateSong = song => dispatch => {
-  return SongApiUtil.updateSong(song).then(
-    _song => dispatch(receiveSong(_song))),
-    error => dispatch(songErrors(error.responseJSON));
+export const updateSong = (songId, song) => dispatch => {
+  return SongApiUtil.updateSong(songId, song).then(_song =>
+    dispatch(receiveSong(_song)),
+    error => dispatch(songErrors(error.responseJSON))
+  );
 };
 
 export const createSong = song => dispatch => {

@@ -27,7 +27,8 @@ class NavBar extends React.Component {
       return(
         <div className="loggedin-group">
           <UploadModal clearSongErrors={this.props.clearSongErrors}
-            user={this.props.currentUser.id}/>
+            user={this.props.currentUser.id}
+            type="upload"/>
           <button className="header-button">
             {this.props.currentUser.username}</button>
           <button className="header-button"

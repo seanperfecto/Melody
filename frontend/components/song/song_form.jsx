@@ -6,8 +6,12 @@ class SongForm extends React.Component {
     super(props);
 
     this.state = {title: '', description: '', image: '',
-      imageUrl: 'http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_1262/v1495044542/melody_logo3_q3qjg9.png',
+      image_url: 'http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_1262/v1495044542/melody_logo3_q3qjg9.png',
       track: '', user_id: this.props.id};
+    if (this.props.song) {
+      this.state = this.props.song;
+      console.log(this.state);
+    }
     this.update = this.update.bind(this);
     this.updateImage = this.updateImage.bind(this);
     this.updateTrack = this.updateTrack.bind(this);
@@ -32,7 +36,7 @@ class SongForm extends React.Component {
     const file = e.currentTarget.files[0];
     var fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ image: file, imageUrl: fileReader.result });
+      this.setState({ image: file, image_url: fileReader.result });
     };
     if (file) {
       fileReader.readAsDataURL(file);
@@ -57,23 +61,41 @@ class SongForm extends React.Component {
     formData.append("song[title]", this.state.title);
     formData.append("song[description]", this.state.description);
     formData.append("song[user_id]", this.state.user_id);
-    formData.append("song[image]", this.state.image);
-    formData.append("song[track]", this.state.track);
-    this.props.createSong(formData)
+    formData.append("song[image]", this.state.image || this.state.image_url);
+    formData.append("song[track]", this.state.track || this.state.track_url);
+
+    if (this.props.type === "upload") {
+      this.props.createSong(formData)
+        .then(this.setState({ title: '' }))
+        .then(data => {
+          this.props.history.push(`/song/${data.song.id}`);
+        }).then(() => this.props.closeModal());
+    } else {
+      this.props.updateSong(this.state.id, formData)
       .then(this.setState({ title: '' }))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
       }).then(() => this.props.closeModal());
+    }
   }
 
   render(){
+    let songWords;
+    let buttonWords;
+    if (this.props.type === "upload") {
+      songWords = "Choose Song";
+      buttonWords = "Upload Song!";
+    } else if (this.props.type === "edit") {
+      songWords = "Edit Song File (optional)";
+      buttonWords = "Edit Song!";
+    }
 
     return(
       <section className='song-form-container'>
         {this.renderErrors()}
         <form className="song-form">
           <div className='song-form-left'>
-            <img src={this.state.imageUrl}
+            <img src={this.state.image_url}
                alt="album-art" />
             <br />
             <input type="file" onChange={this.updateImage}/>
@@ -93,10 +115,11 @@ class SongForm extends React.Component {
               className="song-description"
               cols="40" rows="5"></textarea>
               <hr />
-            <p>Choose Song:</p> <input className="file-button"
+            <p>{ songWords }</p> <input className="file-button"
             type="file" onChange={this.updateTrack}/>
             <hr />
-            <button disabled={!this.state.title} onClick={this.handleSubmit}>Upload Song!</button>
+            <button disabled={!this.state.title}
+                    onClick={this.handleSubmit}>{buttonWords}</button>
           </div>
         </form>
       </section>
