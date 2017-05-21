@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import UploadModal from '../modal/upload_modal';
+import ReactAudioPlayer from 'react-audio-player';
 
 class SongDetail extends React.Component {
   constructor(props){
@@ -11,7 +12,7 @@ class SongDetail extends React.Component {
   componentDidMount(){
     this.props.fetchSong(parseInt(this.props.match.params.songId))
     .then(()=> {
-      document.title = `Melody | ${this.props.song.title}`;
+      document.title = `Melody | Song Detail`;
     });
   }
 
@@ -57,6 +58,11 @@ class SongDetail extends React.Component {
               <h6>Description: {song.description}</h6>
               <h2>P L A Y <i className="fa fa-play-circle-o"></i>
               </h2><br />
+              <ReactAudioPlayer
+                src={song.track_url}
+                autoPlay
+                controls
+              />
               { editButton }
               { deleteButton }
             </div>

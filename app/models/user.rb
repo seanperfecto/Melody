@@ -5,6 +5,12 @@ class User < ApplicationRecord
   before_validation :ensure_session_token
   attr_reader :password
 
+  has_attached_file :profilepic, default_url: "default_profile.jpg"
+  validates_attachment_content_type :profilepic, content_type: /\Aimage\/.*\Z/
+
+  has_attached_file :coverpic, default_url: "GrayBackground.jpg"
+  validates_attachment_content_type :coverpic, content_type: /\Aimage\/.*\Z/
+
   has_many :songs
 
   def self.find_by_credentials(username, password)
