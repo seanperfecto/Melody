@@ -49,24 +49,28 @@ class AuthModal extends React.Component {
   render() {
     let buttonName;
     let buttonType;
+    let type;
     if (this.props.type === "signin") {
       buttonName = "Log In";
       buttonType = (
         <button className="header-button"
           onClick={this.openModal}>{buttonName}</button>
       );
+      type = "signin";
     } else if (this.props.type === "signup") {
       buttonName = "Sign Up";
       buttonType = (
         <button className="header-button"
           onClick={this.openModal}>{buttonName}</button>
       );
+      type = "signup";
     } else {
       buttonName = "Create an Account";
       buttonType = (
         <button className="splash-button"
           onClick={this.openModal}>{buttonName}</button>
       );
+      type = "signup";
     }
     return(
       <div>
@@ -78,7 +82,7 @@ class AuthModal extends React.Component {
         style={customStyles}
         contentLabel="Auth Modal">
 
-          <SessionFormContainer type={this.props.type} />
+          <SessionFormContainer type={type} />
       </Modal>
   </div>
     );
