@@ -34,6 +34,6 @@ export const playPauseSong = (song) => (dispatch) => {
   return dispatch(receivePlayPauseSong(song));
 };
 
-export const playPauseSongFromAudio = (paused) => (dispatch) => {
-  return dispatch(receivePlayPauseSongFromAudio(paused));
+export const playPauseSongFromAudio = () => (dispatch) => {
+  return dispatch(receivePlayPauseSongFromAudio());
 };

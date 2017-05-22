@@ -105,3 +105,16 @@ hr {
   padding-right: 50px;
   padding-left: 50px;
 }
+
+.details-play-pause {
+  width: 200px;
+}
+
+.details-play-pause h2 {
+  display: inline-block;
+}
+
+.details-play-pause:hover {
+  cursor: pointer;
+  color: #c4c4c4;
+}

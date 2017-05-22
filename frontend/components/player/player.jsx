@@ -1,13 +1,27 @@
 import React from 'react';
+import ReactAudioPlayer from 'react-audio-player';
 
 class Player extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  redner() {
+  render() {
+    let { song, paused } = this.props;
+    console.log(paused);
+    let audioPlayer;
+    if (song) {
+      audioPlayer = <ReactAudioPlayer
+        ref={(element) => { this.rap = element; }}
+        src={song.track_url}
+        autoPlay
+        controls
+        />;
+    }
     return(
-      <div>hi</div>
+      <div className='audio-player-container'>
+        { audioPlayer }
+      </div>
     );
   }
 }

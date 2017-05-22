@@ -25,6 +25,7 @@ const App = () => (
       <Route exact path="/song/:songId" component={ SongDetailContainer }  />
     </div>
     <footer>
+      <PlayerContainer />
       <FooterInfo />
     </footer>
   </div>

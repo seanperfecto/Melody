@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import UploadModal from '../modal/upload_modal';
-import ReactAudioPlayer from 'react-audio-player';
 
 class SongDetail extends React.Component {
   constructor(props){
     super(props);
+    this.state = { paused: false };
     this.confirmDelete = this.confirmDelete.bind(this);
+    this.playPauseSong = this.playPauseSong.bind(this);
   }
 
   componentDidMount(){
@@ -36,17 +37,35 @@ class SongDetail extends React.Component {
     }
   }
 
+  playPauseSong() {
+   this.props.playPauseSong(this.props.song);
+  }
+
   render() {
-    const { song, currentUser } = this.props;
+    const { song, currentUser, player } = this.props;
     let editButton, deleteButton;
     if (currentUser) {
       if ( currentUser.id === song.user_id ) {
         editButton = <UploadModal song={this.props.song}
           clearSongErrors={this.props.clearSongErrors}
           type="edit"/>;
-        deleteButton = <button className='detail-ed-button' onClick={this.confirmDelete}>Delete Song</button>;
+        deleteButton = <button className='detail-ed-button'
+          onClick={this.confirmDelete}>Delete Song</button>;
         }
     }
+
+    let playPause;
+    if (player.currentSong) {
+      if ((player.currentSong.id === song.id) &&
+          player.currentSongPlaying === true ) {
+      playPause = <h2>P A U S E <i className="fa fa-pause-circle-o"></i></h2>;
+    } else {
+      playPause = <h2>P L A Y <i className="fa fa-play-circle-o"></i></h2>; }
+    }
+    else {
+      playPause = <h2>P L A Y <i className="fa fa-play-circle-o"></i></h2>;
+    }
+    
     return (
       <div>
         <div className="header-bg"></div>
@@ -58,13 +77,11 @@ class SongDetail extends React.Component {
               <Link to={`/user/${song.user_id}`}>{song.user.username}</Link>
               <h1>{song.title}</h1>
               <h6>Description: {song.description}</h6>
-              <h2>P L A Y <i className="fa fa-play-circle-o"></i>
-              </h2><br />
-              <ReactAudioPlayer
-                src={song.track_url}
-                autoPlay
-                controls
-              />
+                <div className="details-play-pause"
+                  onClick={this.playPauseSong}>
+                  { playPause }
+                </div>
+              <br />
               { editButton }
               { deleteButton }
             </div>
