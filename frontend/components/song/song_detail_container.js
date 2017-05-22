@@ -4,11 +4,10 @@ import SongDetail from './song_detail';
 import { fetchSong, updateSong, deleteSong, clearSongErrors }
   from '../../actions/song_actions';
 
-
 const mapStateToProps = (state) => {
   return ({
     song: state.songDetail,
-    currentUserId: state.session.currentUser.id
+    currentUser: state.session.currentUser
 });
 };
 

@@ -9,6 +9,7 @@ import SplashPageContainer from './hero/splash_page_container';
 import DiscoverContainer from './song/discover_container';
 import SongDetailContainer from './song/song_detail_container';
 import { FooterInfo } from './footer/footer_info';
+import PlayerContainer from './player/player_container';
 
 const App = () => (
   <div className='app'>

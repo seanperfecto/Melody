@@ -24,7 +24,7 @@ u2 = User.create({email: 'sean@gmail.com',
 u3 = User.create({email: 'violinlover@gmail.com',
                   username: 'violinlvr',
                   password: 'password',
-                  bio: 'Have you ever just stopped and listened to the string?'
+                  bio: 'Have you ever just stopped and listened to the string?',
                   profilepic: File.new("#{Rails.root}/app/assets/images/profile/violin.jpg"),
                   coverpic: 'http://econlife.com/wp-content/uploads/2014/02/Conductor-symphony-orchestra-iStock_000018329508Medium.jpg'})
 u4 = User.create({email: 'tyler@gmail.com',
@@ -49,7 +49,7 @@ u7 = User.create({email: 'johnsmith@gmail.com',
                   username: 'johnsmith',
                   password: 'password',
                   bio: 'Just your average Joe, I mean John.',
-                  profilepic: 'https://www.inlandsurfer.com/catalog/view/theme/inlandsurfer/image/inlandsurfer-home-banner.png'),
+                  profilepic: 'https://www.inlandsurfer.com/catalog/view/theme/inlandsurfer/image/inlandsurfer-home-banner.png',
                   coverpic: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Clouds_over_the_Atlantic_Ocean.jpg/1200px-Clouds_over_the_Atlantic_Ocean.jpg'})
 
 # SONG SEEDS
@@ -75,11 +75,11 @@ s4 = Song.create({title: "Rilla Force - Youth (Baby)",
                  user_id: u4.id,
                  image: File.new("#{Rails.root}/app/assets/images/albums/youthbaby.jpeg"),
                  track: File.new("#{Rails.root}/app/assets/music/youthbaby.wav")})
-s5 = Song.create({title: "Monte Booker - Flight",
-                 description: "Credits to Monte Booker; his beats are bar none.",
-                 user_id: u1.id,
-                 image: File.new("#{Rails.root}/app/assets/images/albums/swl016.jpg"),
-                 track: File.new("#{Rails.root}/app/assets/music/flight.mp3")})
+# s5 = Song.create({title: "Monte Booker - Flight",
+#                  description: "Credits to Monte Booker; his beats are bar none.",
+#                  user_id: u1.id,
+#                  image: File.new("#{Rails.root}/app/assets/images/albums/swl016.jpg"),
+#                  track: File.new("#{Rails.root}/app/assets/music/flight.mp3")})
 s6 = Song.create({title: "Johan Lilja - Finding Happiness",
                  description: "Whenever you ever feel down",
                  user_id: u2.id,
@@ -96,7 +96,7 @@ s8 = Song.create({title: "Rad Cat - All I Do",
                  image: 'https://content.theartistunion.com/tracks/artworks/000/103/171/original/6768cf.jpeg?1456359925',
                  track: File.new("#{Rails.root}/app/assets/music/allido.mp3")})
 s9 = Song.create({title: "Daniel Caesar - Streetcar (Swell Edit)",
-                 description: "Rad Cat is one rad cat.",
+                 description: "Smooth.",
                  user_id: u1.id,
                  image: 'https://i1.sndcdn.com/artworks-000216477670-76dspg-t500x500.jpg',
                  track: File.new("#{Rails.root}/app/assets/music/streetcar.mp3")})
@@ -110,11 +110,11 @@ s11 = Song.create({title: "Oshi - oceans",
                  user_id: u3.id,
                  image: 'https://i1.sndcdn.com/artworks-000145354355-jkaveq-t500x500.jpg',
                  track: File.new("#{Rails.root}/app/assets/music/oceans.mp3")})
-s12 = Song.create({title: "Ronin & Deverano - Fall",
-                 description: "Baby can I fall asleep with you?",
-                 user_id: u4.id,
-                 image: 'https://i1.sndcdn.com/artworks-000173901095-j0xlmm-t500x500.jpg',
-                 track: File.new("#{Rails.root}/app/assets/music/fall.mp3")})
+# s12 = Song.create({title: "Ronin & Deverano - Fall",
+#                  description: "Baby can I fall asleep with you?",
+#                  user_id: u4.id,
+#                  image: 'https://i1.sndcdn.com/artworks-000173901095-j0xlmm-t500x500.jpg',
+#                  track: File.new("#{Rails.root}/app/assets/music/fall.mp3")})
 s13 = Song.create({title: "Tasty Treat - Sideways",
                  description: "You know it ain't easy. For these thoughts here to leave me",
                  user_id: u5.id,
@@ -133,7 +133,7 @@ s15 = Song.create({title: "Eljay - U",
 s16 = Song.create({title: "Malo - Something Real ft. Kellie Eastwood",
                  description: "Support the up-and-comers",
                  user_id: u5.id,
-                 image: 'https://i1.sndcdn.com/artworks-000180924516-9doq90-t500x500.jpg"',
+                 image: 'https://i1.sndcdn.com/artworks-000180924516-9doq90-t500x500.jpg',
                  track: File.new("#{Rails.root}/app/assets/music/somethingreal.wav")})
 s17 = Song.create({title: "Ninski x Bri Tolani x Wiles - Neighborhoods",
                  description: "Ever just think about your neghborhood?",
@@ -145,18 +145,18 @@ s18 = Song.create({title: "Wingtip - Rewind ft. Sophie Strauss",
                  user_id: u7.id,
                  image: 'https://i1.sndcdn.com/artworks-BM5yxDRf1Jk0-0-t500x500.jpg',
                  track: File.new("#{Rails.root}/app/assets/music/rewind.wav")})
-s19 = Song.create({title: "Alex Lustin - Timeless",
-                 description: "Just want to say this gets me going.",
-                 user_id: u7.id,
-                 image: 'https://storage.googleapis.com/aia-downloads/Artwork/Alex%20Lustig%20-%20Timeless.jpg',
-                 track: File.new("#{Rails.root}/app/assets/music/timeless.mp3")})
-s20 = Song.create({title: "SMiTHMUSiX - Summertime Fling ft. Alyshah",
-                 description: "For those who have ever had a summertime fling.",
-                 user_id: u4.id,
-                 image: 'https://storage.googleapis.com/aia-downloads/Artwork/SMiTHMUSiX%20-%20Summertime%20Fling%20ft.%20Alyshah.jpg',
-                 track: File.new("#{Rails.root}/app/assets/music/summertime.mp3")})
+# s19 = Song.create!({title: "Alex Lustin - Timeless",
+#                  description: "Just want to say this gets me going.",
+#                  user_id: 7,
+#                  image: 'https://i1.sndcdn.com/artworks-000179994600-54aeez-t500x500.jpg',
+#                  track: File.new("#{Rails.root}/app/assets/music/timeless.mp3")})
+# s20 = Song.create!({title: "SMiTHMUSiX - Summertime Fling ft. Alyshah",
+#                  description: "For those who have ever had a summertime fling.",
+#                  user_id: 4,
+#                  image: 'https://i1.sndcdn.com/artworks-000182756338-g8x42l-t500x500.jpg',
+#                  track: File.new("#{Rails.root}/app/assets/music/summertime.mp3")})
 s21 = Song.create({title: "Pluto - Wet",
                  description: "This beat slaps",
-                 user_id: u3.id,
+                 user_id: 3,
                  image: 'https://i1.sndcdn.com/artworks-000186369703-9qbz02-t500x500.jpg',
                  track: File.new("#{Rails.root}/app/assets/music/wet.mp3")})
