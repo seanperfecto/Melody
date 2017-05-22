@@ -8,8 +8,19 @@ import { playPauseSongFromAudio,
 
 const mapStateToProps = (state, ownProps) => {
   let song = state.player.currentSong;
+  let songIndex = -1;
+  if ((!!song) && (!!state.songs.songs)) {
+    for (let i = 0; i < state.songs.songs.length; i++) {
+      if (state.songs.songs[i].id === song.id) {
+        songIndex = i;
+        break;
+      }
+    }
+  }
   return {
     song: song,
+    songIndex: songIndex,
+    songs: state.songs.songs,
     paused: !state.player.currentSongPlaying
   };
 };
@@ -24,5 +35,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(mapStateToProps,
-                       mapDispatchToProps)
-                      (Player);
+                       mapDispatchToProps)(Player);

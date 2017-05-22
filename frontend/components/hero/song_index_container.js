@@ -1,23 +1,20 @@
 import { connect } from 'react-redux';
 import SongIndex from './song_index';
 
-import { fetchSongs, createSong, updateSong, deleteSong }
+import { fetchSongs }
   from '../../actions/song_actions';
-import { allSongs } from '../../reducers/selectors';
+import { randomEightSongs } from '../../reducers/selectors';
 
 
 const mapStateToProps = (state) => {
   return ({
-  songs: allSongs(state),
+  songs: randomEightSongs(state),
   errors: state.songs.errors
 });
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchSongs: () => dispatch(fetchSongs()),
-  createSong: song => dispatch(createSong(song)),
-  updateSong: song => dispatch(updateSong(song)),
-  deleteSong: id => dispatch(deleteSong(id))
+  fetchSongs: () => dispatch(fetchSongs())
 });
 
 const SongIndexContainer = connect(

@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 
 import { HeaderLogo } from './navbar/header_logo';
 import NavbarContainer from './navbar/navbar_container';
-import SongIndexContainer from './song/song_index_container';
 import HeroHeader from './hero/hero_header';
 import SplashPageContainer from './hero/splash_page_container';
 import DiscoverContainer from './song/discover_container';
