@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
       signout
       render "api/users/show"
     else
-      rednder json: ["Nobdody signed in"], status: 404
+      render json: ["Nobdody signed in"], status: 404
     end
   end
 end
