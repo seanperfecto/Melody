@@ -136,11 +136,11 @@ s16 = Song.create!({title: "Malo - Something Real ft. Kellie Eastwood",
                  user_id: u5.id,
                  image: open('https://s3-us-west-1.amazonaws.com/melody-dev/songs/images/000/000/011/original/artworks-000180924516-9doq90-t500x500.jpg'),
                  track: open('https://s3-us-west-1.amazonaws.com/melody-dev/songs/tracks/000/000/011/original/somethingreal.wav')})
-s17 = Song.create!({title: "Ninski x Bri Tolani x Wiles - Neighborhoods",
-                 description: "Ever just think about your neghborhood?",
-                 user_id: u6.id,
-                 image: open('https://s3-us-west-1.amazonaws.com/melody-dev/users/profilepics/000/000/007/original/inlandsurfer-home-banner.png'),
-                 track: open('https://s3-us-west-1.amazonaws.com/melody-dev/songs/tracks/000/000/001/original/Lush.mp3')})
+# s17 = Song.create!({title: "Ninski x Bri Tolani x Wiles - Neighborhoods",
+#                  description: "Ever just think about your neghborhood?",
+#                  user_id: u6.id,
+#                  image: open('https://s3-us-west-1.amazonaws.com/melody-dev/users/profilepics/000/000/007/original/inlandsurfer-home-banner.png'),
+#                  track: open('https://s3-us-west-1.amazonaws.com/melody-dev/songs/tracks/000/000/001/original/Lush.mp3')})
 s18 = Song.create!({title: "Wingtip - Rewind ft. Sophie Strauss",
                  description: "Let's rewind.",
                  user_id: u7.id,
