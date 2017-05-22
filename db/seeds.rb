@@ -15,4 +15,4 @@ u1 = User.create({email: 'guestuser@gmail.com',
                   password: 'password',
                   bio: 'Just your average Melody user!',
                   profilepic: open('https://s3-us-west-1.amazonaws.com/melody-dev/users/profilepics/000/000/001/original/default_profile.jpg'),
-                  coverpic: open('https://s3-us-west-1.amazonaws.com/melody-dev/users/coverpics/000/000/001/original/GrayBackground.jpg')
+                  coverpic: open('https://s3-us-west-1.amazonaws.com/melody-dev/users/coverpics/000/000/001/original/GrayBackground.jpg')})
