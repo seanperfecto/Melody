@@ -158,6 +158,6 @@ s18 = Song.create!({title: "Wingtip - Rewind ft. Sophie Strauss",
 #                  track: File.new("#{Rails.root}/app/assets/music/summertime.mp3")})
 s21 = Song.create!({title: "Pluto - Wet",
                  description: "This beat slaps",
-                 user_id: 3,
+                 user_id: u5.id,
                  image: open('https://s3-us-west-1.amazonaws.com/melody-dev/songs/images/000/000/013/original/artworks-000186369703-9qbz02-t500x500.jpg'),
                  track: open('https://s3-us-west-1.amazonaws.com/melody-dev/songs/tracks/000/000/013/original/wet.mp3')})
