@@ -2,11 +2,12 @@ import { RECEIVE_CURRENT_TIME_BY_POS,
          RECEIVE_PLAY_PAUSE_SONG_FROM_AUDIO,
          RECEIVE_PLAY_PAUSE_SONG,
          STOP_CURRENT_SONG,
-         RECEIVE_CURRENT_TIME } from '../actions/player_actions';
+         RECEIVE_NEW_CURRENT_TIME } from '../actions/player_actions';
 
 const initialState = {
   currentSong: '',
-  currentSongPlaying: false
+  currentSongPlaying: false,
+  newCurrentTime: ''
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -37,10 +38,8 @@ const playerReducer = (state = initialState, action) => {
     case STOP_CURRENT_SONG:
       newState.currentSong = null;
       return newState;
-    case RECEIVE_CURRENT_TIME:
-      if (Boolean(newState.currentPos) === false) {
-          newState.currentSong.currentTime = action.currentTime;
-        }
+    case RECEIVE_NEW_CURRENT_TIME:
+        newState.newCurrentTime = action.newCurrentTime;
       return newState;
     default:
       return state;

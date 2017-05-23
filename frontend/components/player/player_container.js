@@ -21,7 +21,8 @@ const mapStateToProps = (state, ownProps) => {
     song: song,
     songIndex: songIndex,
     songs: state.songs.songs,
-    paused: !state.player.currentSongPlaying
+    paused: !state.player.currentSongPlaying,
+    newCurrentTime: state.player.newCurrentTime
   };
 };
 

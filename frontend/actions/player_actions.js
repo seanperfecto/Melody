@@ -3,7 +3,7 @@ export const RECEIVE_PLAY_PAUSE_SONG_FROM_AUDIO
   = 'RECEIVE_PLAY_PAUSE_SONG_FROM_AUDIO';
 export const RECEIVE_PLAY_PAUSE_SONG = 'RECEIVE_PLAY_PAUSE_SONG';
 export const STOP_CURRENT_SONG = 'STOP_CURRENT_SONG';
-export const RECEIVE_CURRENT_TIME = 'RECEIVE_CURRENT_TIME';
+export const RECEIVE_NEW_CURRENT_TIME = 'RECEIVE_CURRENT_TIME';
 
 
 export const receiveCurrentTimeByPos = (currentPos) => ({
@@ -25,9 +25,9 @@ export const stopCurrentSong = () => ({
     type: STOP_CURRENT_SONG,
 });
 
-export const receiveCurrentTime = (currentTime) => ({
-  type: RECEIVE_CURRENT_TIME,
-  currentTime
+export const receiveCurrentTime = (newCurrentTime) => ({
+  type: RECEIVE_NEW_CURRENT_TIME,
+  newCurrentTime
 });
 
 export const playPauseSong = (song) => (dispatch) => {

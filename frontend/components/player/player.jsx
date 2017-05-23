@@ -8,8 +8,11 @@ class Player extends React.Component {
     this.back = this.back.bind(this);
     this.next = this.next.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
+    this.start = this.start.bind(this);
+    this.updateTime = this.updateTime.bind(this);
 
-    this.state = { paused: false, percent: 0, volume: 50 };
+    this.state = { paused: false, percent: 0, volume: 50,
+                   duration: 0, currentTime: 0 };
   }
 
   componentWillReceiveProps(newProps){
@@ -22,6 +25,14 @@ class Player extends React.Component {
       (this.rap.audioEl.paused) ? this.rap.audioEl.play() : this.rap.audioEl.pause();
       this.setState({paused: !this.state.paused});
     }
+
+    if (newProps.newCurrentTime !== this.props.newCurrentTime) {
+      this.rap.audioEl.currentTime = newProps.newCurrentTime;
+    }
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval);
   }
 
   back(){
@@ -34,21 +45,32 @@ class Player extends React.Component {
     console.log('hi');
   }
 
+  start(){
+    this.setState({ duration: this.rap.audioEl.duration });
+    this.interval = setInterval(this.updateTime, 40);
+  }
+
+  updateTime(){
+    this.setState({ currentTime: this.rap.audioEl.currentTime });
+  }
+
   togglePlay(){
     this.props.playPauseSongFromAudio(this.rap.audioEl.paused);
-    console.log(this.rap.audioEl.currentTime);
-    console.log(this.rap.audioEl.volume);
   }
 
   render() {
-    let { song, paused } = this.props;
+    let { song, paused, receiveCurrentTime } = this.props;
     let audioPlayer, endNum;
     if (song) {
-      audioPlayer = <ReactAudioPlayer
+      audioPlayer = <div><ReactAudioPlayer
         ref={(element) => { this.rap = element; }}
+        onCanPlay={this.start}
         src={song.track_url}
         autoPlay
-        />;
+        />
+      <ProgressBar duration={this.state.duration}
+                   currentTime={this.state.currentTime}
+                   receiveCurrentTime={receiveCurrentTime}/></div>;
     }
     let playPauseIcon = <i className="fa fa-pause play-pause"></i>;
     if (this.props.paused) {
@@ -66,9 +88,7 @@ class Player extends React.Component {
               <li onClick={this.next}><i className="fa fa-step-forward"></i></li>
             </ul>
           </div>
-
           { audioPlayer }
-          { endNum }
         </div>;
     }
     return(

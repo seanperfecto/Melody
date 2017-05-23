@@ -5,8 +5,21 @@
    height:50px;
    width:100%;
    background-color: #DADADA;
+   display: flex;
+   justify-content: center;
 }
 
 #hidden-player {
   display: hidden;
 }
+
+progress {
+  background-color: #f3f3f3;
+  color: #DB5555;
+  border: 0;
+  height: 18px;
+  border-radius: 9px;
+  width: 400px;
+}
+progress::-webkit-progress-value { background: #DB5555; }
+progress::-moz-progress-bar { background: #DB5555; }
