@@ -83,9 +83,11 @@ class Player extends React.Component {
       <div className='audio-player-container'>
           <div className="controls-div">
             <ul className="controls-ul">
-              <li onClick={this.back}><i className="fa fa-step-backward"></i></li>
+              <li onClick={this.back}>
+                <i className="fa fa-step-backward"></i></li>
               <li onClick={this.togglePlay}>{playPauseIcon}</li>
-              <li onClick={this.next}><i className="fa fa-step-forward"></i></li>
+              <li onClick={this.next}>
+                <i className="fa fa-step-forward"></i></li>
             </ul>
           </div>
           { audioPlayer }

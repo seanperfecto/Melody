@@ -7,10 +7,19 @@
    background-color: #DADADA;
    display: flex;
    justify-content: center;
+   align-items: center;
 }
 
 #hidden-player {
   display: hidden;
+}
+
+.controls-ul {
+  display:flex;
+}
+
+.controls-ul i:hover{
+  cursor: pointer;
 }
 
 progress {
@@ -20,6 +29,10 @@ progress {
   height: 18px;
   border-radius: 9px;
   width: 400px;
+}
+
+progress:hover {
+  cursor:pointer;
 }
 progress::-webkit-progress-value { background: #DB5555; }
 progress::-moz-progress-bar { background: #DB5555; }
