@@ -26,7 +26,7 @@ class SongForm extends React.Component {
     if (this.props.errors) {
       return (
         this.props.errors.map(error => {
-          return (<li className="error" key={error}>{error}</li>);
+          return (<li className="upload-error" key={error}>{error}</li>);
         })
       );
     }
@@ -70,21 +70,18 @@ class SongForm extends React.Component {
 
     if (this.props.type === "upload") {
       this.props.createSong(formData)
-      .then(this.refs.btn.setAttribute("disabled", "disabled"))
+      .then(this.setState({loading: true}))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
       }).then(() => {
-        this.refs.btn.removeAttribute("disabled");
         this.props.closeModal();
       });
     } else {
       this.props.updateSong(this.state.id, formData)
       .then(this.setState({loading: true}))
-      .then(this.refs.btn.setAttribute("disabled", "disabled"))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
       }).then(() => {
-        this.refs.btn.removeAttribute("disabled");
         this.props.closeModal();
       });
     }
@@ -118,7 +115,7 @@ class SongForm extends React.Component {
                alt="album-art" />
             <br />
             <p>{ imageWords }</p>
-            <input type="file" onChange={this.updateImage}/>
+            <input type="file" disabled={this.state.loading} onChange={this.updateImage}/>
           </div>
           <div className='song-form-right'>
             <input
@@ -135,10 +132,10 @@ class SongForm extends React.Component {
               className="song-description"
               cols="40" rows="5"></textarea>
               <hr />
-            <p>{ songWords }</p> <input className="file-button"
+            <p>{ songWords }</p> <input disabled={this.state.loading} className="file-button"
             type="file" onChange={this.updateTrack}/>
             <hr />
-            <button ref="btn"
+            <button disabled={this.state.loading}
                     onClick={this.handleSubmit}>{buttonWords}</button>
           </div>
         </form>

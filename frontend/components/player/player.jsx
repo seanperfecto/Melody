@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import ProgressBar from './progressbar';
+import { Link } from 'react-router-dom';
 
 class Player extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Player extends React.Component {
     this.togglePlay = this.togglePlay.bind(this);
     this.start = this.start.bind(this);
     this.updateTime = this.updateTime.bind(this);
+    this.changeVol = this.changeVol.bind(this);
 
     this.state = { paused: false, percent: 0, volume: 50,
                    duration: 0, currentTime: 0 };
@@ -46,8 +48,8 @@ class Player extends React.Component {
   }
 
   start(){
-    this.setState({ duration: this.rap.audioEl.duration });
-    this.setState({ volume: this.rap.audioEl.volume });
+    this.setState({ duration: this.rap.audioEl.duration,
+                    volume: this.rap.audioEl.volume });
     this.interval = setInterval(this.updateTime, 40);
   }
 
@@ -57,6 +59,12 @@ class Player extends React.Component {
 
   togglePlay(){
     this.props.playPauseSongFromAudio(this.rap.audioEl.paused);
+  }
+
+  changeVol(e){
+    this.rap.audioEl.volume = e.target.value;
+    this.setState({volume: e.target.value});
+    console.log(this.state.volume);
   }
 
   render() {
@@ -77,6 +85,12 @@ class Player extends React.Component {
     if (this.props.paused) {
       playPauseIcon = <i className="fa fa-play play-pause"></i>;
     }
+    let volumeButton = <i className="fa fa-volume-down" aria-hidden="true"></i>;
+    if (this.state.volume < 0.05) {
+      volumeButton = <i className="fa fa-volume-off" aria-hidden="true"></i>;
+    } else if (this.state.volume > 0.70) {
+      volumeButton = <i className="fa fa-volume-up" aria-hidden="true"></i>;
+    }
 
     let audioPlayerContainer;
     if (song) {
@@ -93,7 +107,12 @@ class Player extends React.Component {
           </div>
           { audioPlayer }
           <div className='audio-div'>
-            <input type="range" min="0" max="100" />
+            <input onChange={this.changeVol} type="range" min="0" max="1" step="0.01"/>
+            { volumeButton }
+          </div>
+          <div className='audio-info'>
+              <Link to={`/song/${song.id}`}><img src={song.image_url} alt="song cover" /></Link>
+              <Link to={`/song/${song.id}`}><p>{song.title}</p></Link>
           </div>
         </div>;
     }
