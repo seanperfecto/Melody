@@ -7,7 +7,7 @@ class SongForm extends React.Component {
 
     this.state = {title: '', description: '', image: '',
       image_url: 'http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_1262/v1495044542/melody_logo3_q3qjg9.png',
-      track: '', user_id: this.props.id};
+      track: '', user_id: this.props.id, disable: true, loading: false};
     if (this.props.song) {
       this.state = this.props.song;
       console.log(this.state);
@@ -70,16 +70,23 @@ class SongForm extends React.Component {
 
     if (this.props.type === "upload") {
       this.props.createSong(formData)
-      .then(this.setState({ title: '' }))
+      .then(this.refs.btn.setAttribute("disabled", "disabled"))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
-      }).then(() => this.props.closeModal());
+      }).then(() => {
+        this.refs.btn.removeAttribute("disabled");
+        this.props.closeModal();
+      });
     } else {
       this.props.updateSong(this.state.id, formData)
-      .then(this.setState({ title: '' }))
+      .then(this.setState({loading: true}))
+      .then(this.refs.btn.setAttribute("disabled", "disabled"))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
-      }).then(() => this.props.closeModal());
+      }).then(() => {
+        this.refs.btn.removeAttribute("disabled");
+        this.props.closeModal();
+      });
     }
   }
 
@@ -88,17 +95,23 @@ class SongForm extends React.Component {
     let imageWords;
     let buttonWords;
     if (this.props.type === "upload") {
-      songWords = "Choose Album Art";
+      imageWords = "Choose Album Art";
+      songWords = "Choose Song";
       buttonWords = "Upload Song!";
     } else if (this.props.type === "edit") {
-      songWords = "Edit Album Art (optional)";
+      imageWords = "Edit Album Art (optional)";
       songWords = "Edit Song File (optional)";
       buttonWords = "Edit Song!";
+    }
+    let Loading;
+    if (this.state.loading === true) {
+      Loading = <div className="loader">Loading...</div>;
     }
 
     return(
       <section className='song-form-container'>
         {this.renderErrors()}
+        { Loading }
         <form className="song-form">
           <div className='song-form-left'>
             <img src={this.state.image_url}
@@ -125,7 +138,7 @@ class SongForm extends React.Component {
             <p>{ songWords }</p> <input className="file-button"
             type="file" onChange={this.updateTrack}/>
             <hr />
-            <button disabled={!this.state.title}
+            <button ref="btn"
                     onClick={this.handleSubmit}>{buttonWords}</button>
           </div>
         </form>
