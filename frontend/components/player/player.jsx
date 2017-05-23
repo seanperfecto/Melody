@@ -47,6 +47,7 @@ class Player extends React.Component {
 
   start(){
     this.setState({ duration: this.rap.audioEl.duration });
+    this.setState({ volume: this.rap.audioEl.volume });
     this.interval = setInterval(this.updateTime, 40);
   }
 
@@ -91,6 +92,9 @@ class Player extends React.Component {
             </ul>
           </div>
           { audioPlayer }
+          <div className='audio-div'>
+            <input type="range" min="0" max="100" />
+          </div>
         </div>;
     }
     return(

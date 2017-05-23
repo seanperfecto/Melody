@@ -49,8 +49,8 @@ class ProgressBar extends React.Component {
     let timeInSec = this.renderTime(currentTime);
     let durationInSec = this.renderTime(duration);
     return(
-      <div>
-        {timeInSec}
+      <div className='progress-bar'>
+        {timeInSec}&nbsp;&nbsp;
         <progress
           onClick={this.click}
           onMouseDown={this.down}
@@ -59,7 +59,7 @@ class ProgressBar extends React.Component {
           onMouseLeave={this.up}
           value={this.props.currentTime}
           max={this.props.duration}></progress>
-        {durationInSec}
+        &nbsp;&nbsp;{durationInSec}
       </div>
     );
   }

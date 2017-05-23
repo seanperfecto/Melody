@@ -2,7 +2,7 @@
   position:fixed;
    left:0px;
    bottom:0px;
-   height:50px;
+   height:45px;
    width:100%;
    background-color: #DADADA;
    display: flex;
@@ -20,13 +20,14 @@
 
 .controls-ul i:hover{
   cursor: pointer;
+  color: #DB5555;
 }
 
 progress {
   background-color: #f3f3f3;
   color: #DB5555;
   border: 0;
-  height: 18px;
+  height: 10px;
   border-radius: 9px;
   width: 400px;
 }
@@ -36,3 +37,10 @@ progress:hover {
 }
 progress::-webkit-progress-value { background: #DB5555; }
 progress::-moz-progress-bar { background: #DB5555; }
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+}
+
+// Volume Player credits to danielstern.ca/range.css/#
