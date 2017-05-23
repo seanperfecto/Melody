@@ -13,7 +13,7 @@ export const SplashPage = ({ clearErrors }) => (
     </div>
     <div className='more-info'>
       <h3>Now, what are you waiting for?</h3>
-      <h4>Hear new music and be heard. All for free.</h4>
+      <h4>Hear new tracks and be heard. All for free.</h4>
       <AuthModal clearErrors={clearErrors} type="account" />
     </div>
   </div>

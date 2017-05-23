@@ -24,7 +24,6 @@ class SongDetail extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.songId !== nextProps.match.params.songId) {
       this.props.fetchSong(parseInt(nextProps.match.params.songId));
-      document.title = `Melody | ${nextProps.title}`;
     }
   }
 
@@ -65,7 +64,7 @@ class SongDetail extends React.Component {
     else {
       playPause = <h2>P L A Y <i className="fa fa-play-circle-o"></i></h2>;
     }
-    
+
     return (
       <div>
         <div className="header-bg"></div>
