@@ -38,7 +38,7 @@
 
 .bottom-splash {
   position: relative;
-  height: 420px;
+  height: 480px;
   background-image: url('https://s3-us-west-1.amazonaws.com/melody-dev/rocker2.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,14 +48,14 @@
 .bottom-splash h1 {
   color: white;
   font-family: 'Oswald', sans-serif;
-  font-size: 50px;
+  font-size: 80px;
   font-weight: 600;
-  left: 15%;
+  left: 10%;
   padding-top: 50px;
   position: absolute;
   margin: 10px 0;
-  letter-spacing: 8px;
-  line-height: 55px;
+  letter-spacing: 12px;
+  line-height: 85px;
 }
 
 .more-info {

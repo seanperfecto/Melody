@@ -9,7 +9,7 @@ export const SplashPage = ({ clearErrors }) => (
       <SongIndexContainer />
     </div>
     <div className='bottom-splash'>
-      <h1>FOR THE ARTISTS<br/>BY THE ARTISTS</h1>
+      <h1>FOR ARTISTS<br/>BY ARTISTS</h1>
     </div>
     <div className='more-info'>
       <h3>Now, what are you waiting for?</h3>

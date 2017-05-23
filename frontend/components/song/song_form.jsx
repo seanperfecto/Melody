@@ -85,11 +85,13 @@ class SongForm extends React.Component {
 
   render(){
     let songWords;
+    let imageWords;
     let buttonWords;
     if (this.props.type === "upload") {
-      songWords = "Choose Song";
+      songWords = "Choose Album Art";
       buttonWords = "Upload Song!";
     } else if (this.props.type === "edit") {
+      songWords = "Edit Album Art (optional)";
       songWords = "Edit Song File (optional)";
       buttonWords = "Edit Song!";
     }
@@ -102,6 +104,7 @@ class SongForm extends React.Component {
             <img src={this.state.image_url}
                alt="album-art" />
             <br />
+            <p>{ imageWords }</p>
             <input type="file" onChange={this.updateImage}/>
           </div>
           <div className='song-form-right'>

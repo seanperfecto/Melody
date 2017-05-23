@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
+import ProgressBar from './progressbar';
 
 class Player extends React.Component {
   constructor(props) {
@@ -47,7 +48,6 @@ class Player extends React.Component {
         ref={(element) => { this.rap = element; }}
         src={song.track_url}
         autoPlay
-        buffered
         />;
     }
     let playPauseIcon = <i className="fa fa-pause play-pause"></i>;
@@ -66,14 +66,7 @@ class Player extends React.Component {
               <li onClick={this.next}><i className="fa fa-step-forward"></i></li>
             </ul>
           </div>
-          <div className="progressbar-div">
-            <div className="start-num">
-            </div>
-            <div className="progressbar">
-            </div>
-            <div className="end-num">
-            </div>
-          </div>
+
           { audioPlayer }
           { endNum }
         </div>;

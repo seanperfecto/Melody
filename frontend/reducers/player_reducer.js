@@ -5,7 +5,7 @@ import { RECEIVE_CURRENT_TIME_BY_POS,
          RECEIVE_CURRENT_TIME } from '../actions/player_actions';
 
 const initialState = {
-  currentSong: null,
+  currentSong: '',
   currentSongPlaying: false
 };
 
