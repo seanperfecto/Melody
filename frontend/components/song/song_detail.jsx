@@ -75,7 +75,7 @@ class SongDetail extends React.Component {
             <div className="song-detail-info">
               <Link to={`/user/${song.user_id}`}>{song.user.username}</Link>
               <h1>{song.title}</h1>
-              <h6>Description: {song.description}</h6>
+              <h6>{song.description}</h6>
                 <div className="details-play-pause"
                   onClick={this.playPauseSong}>
                   { playPause }

@@ -8,7 +8,7 @@ class UserDetail extends React.Component {
   componentDidMount(){
     this.props.fetchUser(parseInt(this.props.match.params.userId))
     .then(()=> {
-      document.title = `Melody | ${this.props.user.username}`;
+      document.title = `Melody | User Detail`;
     });
     this.props.fetchSongsByUser(parseInt(this.props.match.params.userId));
   }
@@ -24,15 +24,34 @@ class UserDetail extends React.Component {
   }
 
   render(){
-    const { user } = this.props;
+    const { user } = this.props.user;
     console.log(this.props);
-    let username;
-    if (user.user) {
-      username = <p>{user.user.username}</p> 
+    let username, profpic, bio, coverpic;
+    if (user) {
+      username = user.username;
+      profpic = user.profpic_url;
+      coverpic = user.covpic_url;
+      bio = user.bio;
     }
     return(
       <div>
-        {username}
+        <div className="user-header-bg"></div>
+        <section className="user-detail-main">
+          <div className="user-detail-container">
+            <div className="user-detail-info">
+              <div>
+                <h1>{username}</h1>
+                <h5>{bio}</h5>
+              </div>
+              <button className='follow-button'>Follow</button>
+              <img className="user-detail-cover-pic" src={coverpic}
+                alt="coverpic" />
+            </div>
+            <img className="user-detail-prof-pic" src={profpic}
+              alt={username} />
+          </div>
+        </section>
+        <hr />
       </div>
     );
   }

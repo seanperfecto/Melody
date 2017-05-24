@@ -10,11 +10,12 @@ class Player extends React.Component {
     this.next = this.next.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
     this.start = this.start.bind(this);
+    this.pause = this.pause.bind(this);
     this.updateTime = this.updateTime.bind(this);
     this.changeVol = this.changeVol.bind(this);
 
     this.state = { paused: false, percent: 0, volume: 50,
-                   duration: 0, currentTime: 0 };
+                   duration: 0, currentTime: 0, intervalId: '' };
   }
 
   componentWillReceiveProps(newProps){
@@ -33,9 +34,6 @@ class Player extends React.Component {
     }
   }
 
-  componentWillUnmount(){
-    clearInterval(this.interval);
-  }
 
   back(){
     if (this.rap.audioEl.currentTime > 1) {
@@ -50,7 +48,16 @@ class Player extends React.Component {
   start(){
     this.setState({ duration: this.rap.audioEl.duration,
                     volume: this.rap.audioEl.volume });
-    this.interval = setInterval(this.updateTime, 40);
+    let intervalId = setInterval(this.updateTime, 40);
+    this.setState({intervalId: intervalId});
+  }
+
+  pause(){
+    clearInterval(this.state.intveralId);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.state.intervalId);
   }
 
   updateTime(){
