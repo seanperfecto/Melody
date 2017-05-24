@@ -10,6 +10,10 @@ class SongDetail extends React.Component {
     this.playPauseSong = this.playPauseSong.bind(this);
   }
 
+  componentWillMount(){
+    scrollTo(0,0);
+  }
+
   componentDidMount(){
     this.props.fetchSong(parseInt(this.props.match.params.songId))
     .then(()=> {

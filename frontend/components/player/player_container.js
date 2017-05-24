@@ -5,13 +5,15 @@ import { playPauseSongFromAudio,
          playPauseSong,
          fetchSongs,
          receiveCurrentTime } from '../../actions/player_actions';
+import { allSongs } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   let song = state.player.currentSong;
+  let songArray = allSongs(state);
   let songIndex = -1;
-  if ((!!song) && (!!state.songs.songs)) {
-    for (let i = 0; i < state.songs.songs.length; i++) {
-      if (state.songs.songs[i].id === song.id) {
+  if ((Boolean(song)) && (Boolean(songArray))) {
+    for (let i = 0; i < songArray.length; i++) {
+      if (songArray[i].id === song.id) {
         songIndex = i;
         break;
       }
@@ -20,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     song: song,
     songIndex: songIndex,
-    songs: state.songs.songs,
+    songs: allSongs(state),
     paused: !state.player.currentSongPlaying,
     newCurrentTime: state.player.newCurrentTime
   };

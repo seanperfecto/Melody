@@ -9,6 +9,11 @@ export const receiveUser = user => ({
   user
 });
 
+export const receiveNullUser = () => ({
+  type: RECEIVE_USER,
+  user: null
+});
+
 export const userErrors = errors => {
   return ({
     type: USER_ERRORS,

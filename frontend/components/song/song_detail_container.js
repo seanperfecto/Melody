@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   deleteSong: id => dispatch(deleteSong(id)),
   clearSongErrors: () => dispatch(clearSongErrors()),
   playPauseSong: song => dispatch(playPauseSong(song)),
-  playPauseSongFromAudio: () => dispatch(playPauseSongFromAudio())
+  playPauseSongFromAudio: () => dispatch(playPauseSongFromAudio()),
 });
 
 export default connect(

@@ -79,6 +79,7 @@ a.discover-artist:hover {
   width: 240px;
   height: 240px;
   position: relative;
+  margin-bottom: 5px;
 }
 
 
@@ -105,6 +106,11 @@ a.discover-artist:hover {
   display: block;
   color: white;
   z-index: 1;
+}
+
+.discover-detail-container i:hover {
+  color: #DB5555;
+  cursor: pointer;
 }
 
 .discover-detail-container:hover img {

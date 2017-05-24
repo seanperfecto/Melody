@@ -13,6 +13,7 @@ class Player extends React.Component {
     this.pause = this.pause.bind(this);
     this.updateTime = this.updateTime.bind(this);
     this.changeVol = this.changeVol.bind(this);
+    this.loadSong = this.loadSong.bind(this);
 
     this.state = { paused: false, percent: 0, volume: 50,
                    duration: 0, currentTime: 0, intervalId: '' };
@@ -36,13 +37,21 @@ class Player extends React.Component {
 
 
   back(){
-    if (this.rap.audioEl.currentTime > 1) {
+    if (this.rap.audioEl.currentTime > 2) {
       this.rap.audioEl.currentTime = 0;
+    } else {
+      let { songs } = this.props;
+      this.loadSong(songs[(songs.length + this.props.songIndex - 1) % songs.length]);
     }
   }
 
   next(){
-    console.log('hi');
+    let { songs } = this.props;
+    this.loadSong(songs[(songs.length + this.props.songIndex + 1) % songs.length]);
+  }
+
+  loadSong(song){
+    this.props.playPauseSong(song);
   }
 
   start(){
@@ -86,6 +95,7 @@ class Player extends React.Component {
         ref={(element) => { this.rap = element; }}
         onPlay={this.start}
         onPause={this.pause}
+        onEnd={this.next}
         src={song.track_url}
         autoPlay
         />
@@ -128,7 +138,6 @@ class Player extends React.Component {
           </div>
         </div>;
     }
-    console.log(this.state.currentTime);
     return(
       <div>
         { audioPlayerContainer }

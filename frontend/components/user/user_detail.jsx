@@ -6,6 +6,10 @@ class UserDetail extends React.Component {
     super(props);
   }
 
+  componentWillMount(){
+    scrollTo(0,0);
+  }
+
   componentDidMount(){
     this.props.fetchUser(parseInt(this.props.match.params.userId))
     .then(()=> {
@@ -16,7 +20,7 @@ class UserDetail extends React.Component {
 
   componentWillUnmount() {
     document.title = "Melody";
-    
+    this.props.receiveNullUser();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,7 +43,9 @@ class UserDetail extends React.Component {
     if (this.props.songs) {
     const { songs } = this.props;
     songList = songs.map((song, idx) =>
-      (<DiscoverDetail key={idx} song={song} />));
+    (<DiscoverDetail key={idx} song={song}
+      playPauseSong={this.props.playPauseSong}
+      player={this.props.player} />));
     }
 
     return(
