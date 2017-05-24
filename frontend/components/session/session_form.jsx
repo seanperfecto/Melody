@@ -25,10 +25,10 @@ class SessionForm extends React.Component {
     const user = this.state;
     (this.state.type === 'signin') ?
       this.props.requestSignin(user)
-        .then(data => this.props.history.push(`/home`))
+        .then(data => this.props.history.push(`/discover`))
       :
       this.props.requestSignup(user)
-        .then(data => this.props.history.push(`/home`));
+        .then(data => this.props.history.push(`/discover`));
   }
 
   toggleModal(e) {

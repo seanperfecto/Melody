@@ -8,7 +8,13 @@ class Discover extends React.Component {
 
   componentDidMount(){
     this.props.fetchSongs();
+    document.title = "Melody | Discover";
   }
+
+  componentWillUnmount() {
+    document.title = "Melody";
+  }
+
 
   render(){
     let songList;
@@ -16,7 +22,9 @@ class Discover extends React.Component {
     if (this.props.songs) {
     const { songs } = this.props;
     songList = songs.map((song, idx) =>
-      (<DiscoverDetail key={idx} song={song} />));
+      (<DiscoverDetail key={idx} song={song}
+        playPauseSong={this.props.playPauseSong}
+        player={this.props.player} />));
     }
 
     return(

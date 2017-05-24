@@ -16,6 +16,7 @@ class UserDetail extends React.Component {
 
   componentWillUnmount() {
     document.title = "Melody";
+    
   }
 
   componentWillReceiveProps(nextProps) {

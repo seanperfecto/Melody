@@ -4,10 +4,12 @@
    bottom:0px;
    height:45px;
    width:100%;
-   background-color: #DADADA;
+   background-color: #3d3d3d;
+   color: white;
    display: flex;
    justify-content: center;
    align-items: center;
+   z-index: 10;
 }
 
 #hidden-player {
@@ -17,6 +19,7 @@
 .controls-ul {
   display:flex;
 }
+
 
 .controls-ul i:hover{
   cursor: pointer;
@@ -73,7 +76,11 @@ progress::-moz-progress-bar { background: #DB5555; }
 
 .audio-info a {
   text-decoration: none;
-  color: #111111;
+  color: white;
+}
+
+.audio-info a:first-child {
+  height: 40px;
 }
 
 .audio-info a:hover {
@@ -81,7 +88,7 @@ progress::-moz-progress-bar { background: #DB5555; }
 }
 
 .audio-info a:visited {
-  color: #111111;
+  color: white;
 }
 
 // Volume Player credits to danielstern.ca/range.css/#

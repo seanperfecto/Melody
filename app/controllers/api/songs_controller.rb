@@ -26,10 +26,10 @@ class Api::SongsController < ApplicationController
     @song = Song.find(params[:id])
     updated_params = {}
     unless song_params[:image] == @song.image.url
-      updated_params[:image] = song_params.image
+      updated_params[:image] = song_params[:image]
     end
     unless song_params[:track] == @song.track.url
-      updated_params[:track] = song_params.track
+      updated_params[:track] = song_params[:track]
     end
     updated_params[:title] = song_params[:title]
     updated_params[:description] = song_params[:description]

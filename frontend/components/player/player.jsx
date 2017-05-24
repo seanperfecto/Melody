@@ -48,12 +48,16 @@ class Player extends React.Component {
   start(){
     this.setState({ duration: this.rap.audioEl.duration,
                     volume: this.rap.audioEl.volume });
-    let intervalId = setInterval(this.updateTime, 40);
+    let intervalId = setInterval(()=> {
+      if (!this.state.paused) {
+        this.updateTime();
+      }
+    }, 40);
     this.setState({intervalId: intervalId});
   }
 
   pause(){
-    clearInterval(this.state.intveralId);
+    this.setState({paused: true});
   }
 
   componentWillUnmount(){
@@ -80,7 +84,8 @@ class Player extends React.Component {
     if (song) {
       audioPlayer = <div><ReactAudioPlayer
         ref={(element) => { this.rap = element; }}
-        onCanPlay={this.start}
+        onPlay={this.start}
+        onPause={this.pause}
         src={song.track_url}
         autoPlay
         />
@@ -90,7 +95,7 @@ class Player extends React.Component {
     }
     let playPauseIcon = <i className="fa fa-pause play-pause"></i>;
     if (this.props.paused) {
-      playPauseIcon = <i className="fa fa-play play-pause"></i>;
+      playPauseIcon = <i onClick={this.pause} className="fa fa-play play-pause"></i>;
     }
     let volumeButton = <i className="fa fa-volume-down" aria-hidden="true"></i>;
     if (this.state.volume < 0.05) {
@@ -123,6 +128,7 @@ class Player extends React.Component {
           </div>
         </div>;
     }
+    console.log(this.state.currentTime);
     return(
       <div>
         { audioPlayerContainer }
