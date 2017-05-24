@@ -19,6 +19,21 @@
   padding: 0 20px;
 }
 
+.user-songs {
+  max-width: 1200px;
+  width: 100%;
+  margin: 20px auto 30px auto;
+  padding: 0 20px;
+}
+
+.user-songs h1 {
+  font-size: 48px;
+  font-family: 'Permanent Marker', cursive;
+  color: #111111;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
 .user-detail-container {
   display: flex;
   flex-direction: row;
@@ -69,7 +84,7 @@
 
 hr {
   max-width: 1200px;
-  width: 90%;
+  width: 100%;
 }
 
 .follow-button {

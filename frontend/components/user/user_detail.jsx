@@ -1,4 +1,5 @@
 import React from 'react';
+import DiscoverDetail from '../song/discover_detail';
 
 class UserDetail extends React.Component {
   constructor(props) {
@@ -26,13 +27,20 @@ class UserDetail extends React.Component {
   render(){
     const { user } = this.props.user;
     console.log(this.props);
-    let username, profpic, bio, coverpic;
+    let username, profpic, bio, coverpic, songList;
     if (user) {
       username = user.username;
       profpic = user.profpic_url;
       coverpic = user.covpic_url;
       bio = user.bio;
     }
+
+    if (this.props.songs) {
+    const { songs } = this.props;
+    songList = songs.map((song, idx) =>
+      (<DiscoverDetail key={idx} song={song} />));
+    }
+
     return(
       <div>
         <div className="user-header-bg"></div>
@@ -52,6 +60,12 @@ class UserDetail extends React.Component {
           </div>
         </section>
         <hr />
+        <section className='user-songs'>
+          <h1>Songs</h1>
+          <ul className="discover-list">
+            { songList }
+          </ul>
+        </section>
       </div>
     );
   }
