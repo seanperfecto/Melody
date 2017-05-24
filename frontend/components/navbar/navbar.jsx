@@ -26,11 +26,12 @@ class NavBar extends React.Component {
     if (this.props.currentUser) {
       return(
         <div className="loggedin-group">
+          <Link to={`/user/${this.props.currentUser.id}`}>
+          <button className="header-button">
+            {this.props.currentUser.username}</button></Link>
           <UploadModal clearSongErrors={this.props.clearSongErrors}
             user={this.props.currentUser.id}
             type="upload"/>
-          <button className="header-button">
-            {this.props.currentUser.username}</button>
           <button className="header-button"
             onClick={this.handleSignout}>Sign Out</button>
         </div>

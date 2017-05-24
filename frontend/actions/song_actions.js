@@ -1,4 +1,5 @@
 import * as SongApiUtil from '../util/song_api_util';
+import * as UserApiUtil from '../util/user_api_util';
 
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
@@ -23,7 +24,6 @@ export const removeSong = song => ({
 });
 
 export const songErrors = errors => {
-  console.log(errors);
   return ({
     type: SONG_ERRORS,
     errors
@@ -38,6 +38,12 @@ export const clearSongErrors = () => ({
 // async actions
 export const fetchSongs = () => dispatch => (
   SongApiUtil.fetchSongs().then(songs => (
+    dispatch(receiveSongs(songs))
+  ))
+);
+
+export const fetchSongsByUser = id => dispatch => (
+  UserApiUtil.fetchSongsByUser(id).then(songs => (
     dispatch(receiveSongs(songs))
   ))
 );

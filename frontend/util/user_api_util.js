@@ -1,11 +1,18 @@
-export const fetchSong = id => (
+export const fetchUser = id => (
   $.ajax({
     method: 'get',
     url: `/api/users/${id}`
   })
 );
 
-export const updateSong = (userId, formData) => (
+export const fetchSongsByUser = id => (
+  $.ajax({
+    method: 'get',
+    url: `/api/user/${id}/songs`
+  })
+);
+
+export const updateUser = (userId, formData) => (
   $.ajax({
     method: 'patch',
     url: `/api/users/${userId}`,

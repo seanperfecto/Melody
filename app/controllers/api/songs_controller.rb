@@ -24,14 +24,28 @@ class Api::SongsController < ApplicationController
 
   def update
     @song = Song.find(params[:id])
-    if @song.update(song_params)
+    updated_params = {}
+    unless song_params[:image] == @song.image.url
+      updated_params[:image] = song_params.image
+    end
+    unless song_params[:track] == @song.track.url
+      updated_params[:track] = song_params.track
+    end
+    updated_params[:title] = song_params[:title]
+    updated_params[:description] = song_params[:description]
+    updated_params[:user_id] = song_params[:user_id]
+    if @song.update_attributes(updated_params)
       render :show
     else
       render json: @song.errors.full_messages, status: 422
     end
   end
 
-  private
+  def user_songs
+    @user = User.find(params[:id])
+    @songs = @user.songs
+    render :index
+  end
 
   private
 

@@ -10,7 +10,6 @@ class SongForm extends React.Component {
       track: '', user_id: this.props.id, disable: true, loading: false};
     if (this.props.song) {
       this.state = this.props.song;
-      console.log(this.state);
     }
     this.update = this.update.bind(this);
     this.updateImage = this.updateImage.bind(this);
@@ -71,6 +70,7 @@ class SongForm extends React.Component {
     if (this.props.type === "upload") {
       this.props.createSong(formData)
       .then(this.setState({loading: true}))
+      .fail(this.setState({loading: false}))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
       }).then(() => {
@@ -79,6 +79,7 @@ class SongForm extends React.Component {
     } else {
       this.props.updateSong(this.state.id, formData)
       .then(this.setState({loading: true}))
+      .fail(this.setState({loading: false}))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
       }).then(() => {
