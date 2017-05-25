@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import UserDetail from './user_detail';
 
-import { fetchSongsByUser }
-  from '../../actions/user_actions';
-import { fetchUser, updateUser } from '../../actions/user_actions';
+import { fetchSongsByUser, fetchUser, updateUser,
+         receiveNullUser, clearUserSongs } from '../../actions/user_actions';
 import { playPauseSong } from '../../actions/player_actions';
 import { allSongsByUser } from '../../reducers/selectors';
-import { receiveNullUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state) => {
   return ({
@@ -23,7 +21,8 @@ const mapDispatchToProps = dispatch => ({
   updateUser: (userId, user) => dispatch(updateUser(userId, user)),
   fetchSongsByUser: (id) => dispatch(fetchSongsByUser(id)),
   playPauseSong: (song) => dispatch(playPauseSong(song)),
-  receiveNullUser: () => dispatch(receiveNullUser())
+  receiveNullUser: () => dispatch(receiveNullUser()),
+  clearUserSongs: () => dispatch(clearUserSongs())
 });
 
 export default connect(

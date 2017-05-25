@@ -3,6 +3,7 @@ import * as UserApiUtil from '../util/user_api_util';
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const USER_ERRORS = 'USER_ERRORS';
 export const RECEIVE_USER_SONGS = 'RECEIVE_USER_SONGS';
+export const CLEAR_USER_SONGS = 'CLEAR_USER_SONGS';
 
 
 export const receiveUser = user => ({
@@ -26,6 +27,13 @@ export const receiveUserSongs = songs => {
   return ({
     type: RECEIVE_USER_SONGS,
     songs
+  });
+};
+
+export const clearUserSongs = () => {
+  return ({
+    type: RECEIVE_USER_SONGS,
+    songs: null
   });
 };
 

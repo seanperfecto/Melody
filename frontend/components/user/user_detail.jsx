@@ -25,18 +25,23 @@ class UserDetail extends React.Component {
       this.props.fetchSongsByUser(parseInt(this.props.match.params.userId));
     })
     .then(()=> {
-      document.title = `Melody | ${this.props.user.user.username}`;
+      document.title = `Melody | User Page`;
     });
   }
 
   componentWillUnmount() {
     document.title = "Melody";
     this.props.receiveNullUser();
+    this.props.clearUserSongs();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.userId !== nextProps.match.params.userId) {
-      this.props.fetchSongbyUser(parseInt(nextProps.match.params.userId));
+      this.props.fetchUser(parseInt(nextProps.match.params.userId))
+      .then(()=> {
+        this.setState({bio: nextProps.user.user.bio});
+        this.props.fetchSongsByUser(parseInt(nextProps.match.params.userId));
+      });
     }
   }
 
