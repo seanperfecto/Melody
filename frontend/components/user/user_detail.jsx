@@ -4,6 +4,11 @@ import DiscoverDetail from '../song/discover_detail';
 class UserDetail extends React.Component {
   constructor(props) {
     super(props);
+
+    this.updateProf = this.updateProf.bind(this);
+    this.updateCov = this.updateCov.bind(this);
+
+    this.state = {imageFile: ''};
   }
 
   componentWillMount(){
@@ -13,9 +18,11 @@ class UserDetail extends React.Component {
   componentDidMount(){
     this.props.fetchUser(parseInt(this.props.match.params.userId))
     .then(()=> {
-      document.title = `Melody | User Detail`;
+      this.props.fetchSongsByUser(parseInt(this.props.match.params.userId));
+    })
+    .then(()=> {
+      document.title = `Melody | ${this.props.user.user.username}`;
     });
-    this.props.fetchSongsByUser(parseInt(this.props.match.params.userId));
   }
 
   componentWillUnmount() {
@@ -29,15 +36,53 @@ class UserDetail extends React.Component {
     }
   }
 
+  updateProf(e){
+    let file = e.currentTarget.files[0];
+    let formData = new FormData();
+    formData.append("user[profilepic]", file);
+    this.props.updateUser(this.props.currentUser.id, formData);
+  }
+
+  updateCov(e){
+    let file = e.currentTarget.files[0];
+    let formData = new FormData();
+    formData.append("user[coverpic]", file);
+    this.props.updateUser(this.props.currentUser.id, formData);
+  }
+
   render(){
+    const { currentUser} = this.props;
     const { user } = this.props.user;
-    console.log(this.props);
     let username, profpic, bio, coverpic, songList;
+    let editProfPicButton, editCovPicButton;
     if (user) {
       username = user.username;
       profpic = user.profpic_url;
       coverpic = user.covpic_url;
       bio = user.bio;
+      if (currentUser) {
+        if (user.id === currentUser.id) {
+          editProfPicButton =
+          <label htmlFor='prof-upload'>
+            <span className='add-prof-button'>
+            <i className="fa fa-fw fa-camera" aria-hidden="true"></i>
+              &nbsp;Profile Picture</span>
+            <input type="file"
+              onChange={this.updateProf}
+              id='prof-upload' style={{'display': 'none'}} />
+          </label>;
+
+          editCovPicButton =
+          <label htmlFor='cov-upload'>
+            <span className='add-cov-button'>
+            <i className="fa fa-fw fa-camera" aria-hidden="true"></i>
+              &nbsp;Cover Picture</span>
+            <input type="file"
+              onChange={this.updateCov}
+              id='cov-upload' style={{'display': 'none'}} />
+          </label>;
+        }
+      }
     }
 
     if (this.props.songs) {
@@ -47,6 +92,7 @@ class UserDetail extends React.Component {
       playPauseSong={this.props.playPauseSong}
       player={this.props.player} />));
     }
+
 
     return(
       <div>
@@ -59,11 +105,17 @@ class UserDetail extends React.Component {
                 <h5>{bio}</h5>
               </div>
               <button className='follow-button'>Follow</button>
-              <img className="user-detail-cover-pic" src={coverpic}
-                alt="coverpic" />
+              <div className='user-detail-cov-pic-container'>
+                <img className="user-detail-cover-pic" src={coverpic}
+                  alt="coverpic" />
+                { editCovPicButton }
+              </div>
             </div>
-            <img className="user-detail-prof-pic" src={profpic}
-              alt={username} />
+            <div className='user-detail-prof-pic-container'>
+              <img className="user-detail-prof-pic" src={profpic}
+                alt={username} />
+              { editProfPicButton }
+            </div>
           </div>
         </section>
         <hr />

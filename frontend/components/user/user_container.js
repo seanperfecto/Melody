@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
     user: state.user,
     songs: allSongs(state),
     errors: state.user.errors,
-    player: state.player
+    player: state.player,
+    currentUser: state.session.currentUser
   });
 };
 

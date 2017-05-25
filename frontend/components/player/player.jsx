@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import ProgressBar from './progressbar';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Player extends React.Component {
   constructor(props) {
@@ -35,6 +35,15 @@ class Player extends React.Component {
     }
   }
 
+  componentDidMount(){
+    console.log(this.props);
+    if (this.props.location.pathname.match(/^\/song\/\d*$/)) {
+      if (this.props.songs.length === 0) {
+        this.props.fetchSongs();
+      }
+    }
+  }
+
 
   back(){
     if (this.rap.audioEl.currentTime > 2) {
@@ -44,6 +53,7 @@ class Player extends React.Component {
       this.loadSong(songs[(songs.length + this.props.songIndex - 1) % songs.length]);
     }
   }
+
 
   next(){
     let { songs } = this.props;
@@ -146,4 +156,4 @@ class Player extends React.Component {
   }
 }
 
-export default Player;
+export default withRouter(Player);

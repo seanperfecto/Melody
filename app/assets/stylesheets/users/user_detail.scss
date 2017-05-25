@@ -99,5 +99,43 @@ hr {
 }
 
 .follow-button:hover {
-    color: white;
+  color: white;
+}
+
+.user-detail-prof-pic-container, .user-detail-cov-pic-container {
+  position: relative;
+}
+
+.user-detail-prof-pic-container span,
+.user-detail-cov-pic-container span {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.user-detail-prof-pic-container:hover span,
+.user-detail-cov-pic-container:hover span  {
+  display: block;
+  background-color: #DB5555;
+  border: 0;
+  padding: 7px 13px;
+  color: #E3E5E1;
+  font-size: 14px;
+  font-weight: 300;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.user-detail-prof-pic-container:hover span {
+  margin-left: 25px;
+}
+
+.user-detail-cov-pic-container:hover span {
+  margin-left: 5px;
+}
+
+.user-detail-prof-pic-container:hover span:hover,
+.user-detail-cov-pic-container:hover span:hover {
+  color: white;
 }

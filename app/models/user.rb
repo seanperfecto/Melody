@@ -5,10 +5,10 @@ class User < ApplicationRecord
   before_validation :ensure_session_token
   attr_reader :password
 
-  has_attached_file :profilepic, default_url: "default_profile.jpg"
+  has_attached_file :profilepic, presence: true
   validates_attachment_content_type :profilepic, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :coverpic, default_url: "GrayBackground.jpg"
+  has_attached_file :coverpic, presence: true
   validates_attachment_content_type :coverpic, content_type: /\Aimage\/.*\Z/
 
   has_many :songs

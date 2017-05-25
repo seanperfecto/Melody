@@ -3,8 +3,8 @@ import Player from './player';
 
 import { playPauseSongFromAudio,
          playPauseSong,
-         fetchSongs,
          receiveCurrentTime } from '../../actions/player_actions';
+import { fetchSongs } from '../../actions/song_actions';
 import { allSongs } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {

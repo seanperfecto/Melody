@@ -17,7 +17,7 @@ class SongDetail extends React.Component {
   componentDidMount(){
     this.props.fetchSong(parseInt(this.props.match.params.songId))
     .then(()=> {
-      document.title = `Melody | Song Detail`;
+      document.title = `Melody | ${this.props.song.title}`;
     });
   }
 
