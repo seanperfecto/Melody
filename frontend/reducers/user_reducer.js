@@ -8,17 +8,17 @@ const _initialState = {
 
 const userReducer = (state = _initialState, action) => {
   Object.freeze(state);
-  let nextState = state;
+  let nextState = Object.assign({}, state);
 
   switch (action.type) {
     case RECEIVE_USER:
-      return {user: action.user, errors: []};
+      return Object.assign(nextState, {user: action.user});
     case USER_ERRORS:
       const errors = {errors: action.errors};
-      return Object.assign({}, state, errors);
+      return Object.assign(nextState, errors);
     case RECEIVE_USER_SONGS:
       const songs = {songs: action.songs};
-      return Object.assign({}, nextState, songs);
+      return Object.assign(nextState, songs);
     default:
       return state;
   }

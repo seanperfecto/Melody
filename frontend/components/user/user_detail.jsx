@@ -42,12 +42,9 @@ class UserDetail extends React.Component {
         this.setState({bio: nextProps.user.user.bio});
         this.props.fetchSongsByUser(parseInt(nextProps.match.params.userId));
       });
-    }
+    } 
   }
 
-  componenetWillUpdate(nextProps) {
-    this.setState({bio: nextProps.user.user.bio});
-  }
 
   updateProf(e){
     let file = e.currentTarget.files[0];

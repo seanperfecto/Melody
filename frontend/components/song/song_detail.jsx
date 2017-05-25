@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import UploadModal from '../modal/upload_modal';
+import CommentContainer from '../comment/comment_container';
 
 class SongDetail extends React.Component {
   constructor(props){
@@ -91,6 +92,8 @@ class SongDetail extends React.Component {
           </div>
         </section>
         <hr />
+        Comments<br />
+      <CommentContainer songId={song.id}/>
       </div>
     );
   }
