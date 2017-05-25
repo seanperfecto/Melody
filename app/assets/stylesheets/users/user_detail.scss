@@ -5,7 +5,7 @@
   right: 0;
   left: 0;
   width: 100%;
-  height: 700px;
+  height: 400px;
   background-image: linear-gradient(#ea7779, #762d2e);
   transform: skewY(-8deg);
   transform-origin: top left;
@@ -102,7 +102,8 @@ hr {
   color: white;
 }
 
-.user-detail-prof-pic-container, .user-detail-cov-pic-container {
+.user-detail-prof-pic-container, .user-detail-cov-pic-container,
+.edit-bio-container {
   position: relative;
 }
 
@@ -138,4 +139,59 @@ hr {
 .user-detail-prof-pic-container:hover span:hover,
 .user-detail-cov-pic-container:hover span:hover {
   color: white;
+}
+
+.edit-bio-container i {
+  display: none;
+}
+
+.edit-bio-container:hover i {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.edit-bio-container:hover i:hover {
+  color: #111111;
+}
+
+.edit-textarea {
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgba(0, 0, 0, 0);
+  width: 375px;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  color: white;
+}
+
+.edit-textarea:focus{
+    outline:none;
+}
+
+.edit-submit {
+  background-color: #DB5555;
+  border: 0;
+  padding: 5px 8px;
+  color: white;
+  font-size: 8px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.edit-submit:focus{
+  outline:none;
+}
+
+.discover-list h3{
+  margin: 20px 0;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.no-songs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

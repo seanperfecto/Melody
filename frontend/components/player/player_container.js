@@ -4,7 +4,7 @@ import Player from './player';
 import { playPauseSongFromAudio,
          playPauseSong,
          receiveCurrentTime } from '../../actions/player_actions';
-import { fetchSongs } from '../../actions/song_actions';
+import { fetchSongs, fetchPlayerSongsByUser } from '../../actions/song_actions';
 import { allSongs } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
@@ -33,7 +33,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     playPauseSongFromAudio: (paused) => dispatch(playPauseSongFromAudio(paused)),
     playPauseSong: (song) => dispatch(playPauseSong(song)),
     fetchSongs: () => dispatch(fetchSongs()),
-    receiveCurrentTime: (currentTime) => dispatch(receiveCurrentTime(currentTime))
+    receiveCurrentTime: (currentTime) => dispatch(receiveCurrentTime(currentTime)),
+    fetchPlayerSongsByUser: (id) => dispatch(receiveCurrentTime(id))
   };
 };
 

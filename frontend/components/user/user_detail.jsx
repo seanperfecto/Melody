@@ -7,8 +7,11 @@ class UserDetail extends React.Component {
 
     this.updateProf = this.updateProf.bind(this);
     this.updateCov = this.updateCov.bind(this);
+    this.edit = this.edit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.updateBio = this.updateBio.bind(this);
 
-    this.state = {imageFile: ''};
+    this.state = {imageFile: '', editing: false, bio: ''};
   }
 
   componentWillMount(){
@@ -18,6 +21,7 @@ class UserDetail extends React.Component {
   componentDidMount(){
     this.props.fetchUser(parseInt(this.props.match.params.userId))
     .then(()=> {
+      this.setState({bio: this.props.user.user.bio});
       this.props.fetchSongsByUser(parseInt(this.props.match.params.userId));
     })
     .then(()=> {
@@ -36,6 +40,10 @@ class UserDetail extends React.Component {
     }
   }
 
+  componenetWillUpdate(nextProps) {
+    this.setState({bio: nextProps.user.user.bio});
+  }
+
   updateProf(e){
     let file = e.currentTarget.files[0];
     let formData = new FormData();
@@ -50,11 +58,27 @@ class UserDetail extends React.Component {
     this.props.updateUser(this.props.currentUser.id, formData);
   }
 
+  edit(){
+    this.setState({editing: true});
+  }
+
+  handleChange(e){
+    this.setState({bio: e.target.value});
+  }
+
+  updateBio(e){
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("user[bio]", this.state.bio);
+    this.props.updateUser(this.props.currentUser.id, formData)
+      .then(()=>this.setState({editing: false}));
+  }
+
   render(){
     const { currentUser} = this.props;
     const { user } = this.props.user;
     let username, profpic, bio, coverpic, songList;
-    let editProfPicButton, editCovPicButton;
+    let editProfPicButton, editCovPicButton, followButton;
     if (user) {
       username = user.username;
       profpic = user.profpic_url;
@@ -83,17 +107,47 @@ class UserDetail extends React.Component {
           </label>;
         }
       }
+      if (currentUser) {
+        if (user.id !== currentUser.id) {
+          followButton = <button className='follow-button'>Follow</button>;
+          }
+      }
+
+      if (this.props.songs.length > 0) {
+      const { songs } = this.props;
+      songList = songs.map((song, idx) =>
+      (<DiscoverDetail key={idx} song={song}
+        playPauseSong={this.props.playPauseSong}
+        player={this.props.player} />));
+      } else {
+        songList = <div className='no-songs'><h3>{user.username} has no songs.</h3>
+        <img src='http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_149/v1495683419/melody_logo_bw_yeybpv.png'
+          alt='melody_bw_logo' />
+        </div>;
+      }
     }
 
-    if (this.props.songs) {
-    const { songs } = this.props;
-    songList = songs.map((song, idx) =>
-    (<DiscoverDetail key={idx} song={song}
-      playPauseSong={this.props.playPauseSong}
-      player={this.props.player} />));
+    let editBox;
+    if (user) {
+      if (currentUser && currentUser.id === user.id) {
+        if (this.state.editing) {
+          editBox = <form onSubmit={this.updateBio}>
+                      <textarea className='edit-textarea' value={this.state.bio}
+                        onChange={this.handleChange}/><br/>
+                      <input className='edit-submit' type="submit" value="Update Bio" />
+                    </form>;
+        } else {
+          editBox = <div className='edit-bio-container'>
+                        <h5>
+                          <i onClick={this.edit}
+                            className="fa fa-pencil" aria-hidden="true"></i>
+                          &nbsp;&nbsp;{user.bio}</h5>
+                    </div>;
+        }
+      } else {
+        editBox = <h5>{user.bio}</h5>;
     }
-
-
+    }
     return(
       <div>
         <div className="user-header-bg"></div>
@@ -102,9 +156,10 @@ class UserDetail extends React.Component {
             <div className="user-detail-info">
               <div>
                 <h1>{username}</h1>
-                <h5>{bio}</h5>
+                { editBox }
+
               </div>
-              <button className='follow-button'>Follow</button>
+              { followButton }
               <div className='user-detail-cov-pic-container'>
                 <img className="user-detail-cover-pic" src={coverpic}
                   alt="coverpic" />

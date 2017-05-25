@@ -32,14 +32,21 @@ class Player extends React.Component {
 
     if (newProps.newCurrentTime !== this.props.newCurrentTime) {
       this.rap.audioEl.currentTime = newProps.newCurrentTime;
+      this.setState({currentTime: newProps.newCurrentTime});
     }
   }
 
   componentDidMount(){
-    console.log(this.props);
     if (this.props.location.pathname.match(/^\/song\/\d*$/)) {
       if (this.props.songs.length === 0) {
         this.props.fetchSongs();
+      }
+    }
+    if (this.props.location.pathname.match(/^\/user\/\d*$/)) {
+      if (this.props.songs.length === 0) {
+        this.props.fetchSongs();
+      } else {
+        this.props.fetchPlayerSongsByUser(parseInt(this.props.location.pathname.split('/').pop()));
       }
     }
   }
@@ -94,7 +101,6 @@ class Player extends React.Component {
   changeVol(e){
     this.rap.audioEl.volume = e.target.value;
     this.setState({volume: e.target.value});
-    console.log(this.state.volume);
   }
 
   render() {

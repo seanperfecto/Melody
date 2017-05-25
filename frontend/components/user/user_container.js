@@ -2,16 +2,16 @@ import { connect } from 'react-redux';
 import UserDetail from './user_detail';
 
 import { fetchSongsByUser }
-  from '../../actions/song_actions';
+  from '../../actions/user_actions';
 import { fetchUser, updateUser } from '../../actions/user_actions';
 import { playPauseSong } from '../../actions/player_actions';
-import { allSongs } from '../../reducers/selectors';
+import { allSongsByUser } from '../../reducers/selectors';
 import { receiveNullUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state) => {
   return ({
     user: state.user,
-    songs: allSongs(state),
+    songs: allSongsByUser(state.user.songs),
     errors: state.user.errors,
     player: state.player,
     currentUser: state.session.currentUser

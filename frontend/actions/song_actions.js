@@ -42,12 +42,6 @@ export const fetchSongs = () => dispatch => (
   ))
 );
 
-export const fetchSongsByUser = id => dispatch => (
-  UserApiUtil.fetchSongsByUser(id).then(songs => (
-    dispatch(receiveSongs(songs))
-  ))
-);
-
 export const fetchSong = id => dispatch => (
   SongApiUtil.fetchSong(id).then(song => (
     dispatch(receiveSong(song))
@@ -73,3 +67,9 @@ export const deleteSong = id => dispatch => (
     dispatch(removeSong(song))
   ))
 );
+
+export const fetchPlayerSongsByUser = id => dispatch => {
+  UserApiUtil.fetchSongsByUser(id).then(songs => (
+    dispatch(receiveSongs(songs))
+  ));
+};
