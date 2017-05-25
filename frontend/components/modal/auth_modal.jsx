@@ -37,9 +37,9 @@ class AuthModal extends React.Component {
     this.openModal = this.openModal.bind(this);
 
     window.globalOpenModal = () => {
-        this.setState({modalIsOpen: true});
+        this.setState({modalOpen: true});
       };
-    window.globalOpenModal = window.globalOpenModal.bind(this);
+      window.globalOpenModal = window.globalOpenModal.bind(this);
   }
 
   closeModal() {

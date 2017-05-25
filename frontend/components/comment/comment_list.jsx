@@ -10,12 +10,16 @@ class CommentList extends React.Component {
     this.submitComment = this.submitComment.bind(this);
     this.updateBody = this.updateBody.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.renderTrash = this.renderTrash.bind(this);
   }
 
   componentDidMount(){
     const songId = parseInt(this.props.match.params.songId);
     this.props.fetchCommentsBySong(songId);
-    this.setState({song_id: songId, user_id: this.props.currentUser.id});
+    this.setState({song_id: songId});
+    if (this.props.currentUser) {
+      this.setState({user_id: this.props.currentUser.id});
+    }
   }
 
   componentWillUnmount(){
@@ -51,9 +55,23 @@ class CommentList extends React.Component {
   );
   }
 
+  renderTrash(userId, commentId) {
+    const { currentUser } = this.props;
+    let trash;
+    if (currentUser) {
+      if (currentUser.id === userId) {
+        trash = <i onClick={()=>this.props.deleteComment(commentId)}
+          className="fa fa-times" aria-hidden="true"></i>;
+        }
+      }
+      return trash;
+    }
+
 
   render(){
-    const { comments, errors } = this.props;
+    const { comments, errors, currentUser } = this.props;
+    let trash;
+
     let allComments = comments.map((comment, idx) => {
       return <li className='comment-item' key={idx}>
               <div>
@@ -64,7 +82,7 @@ class CommentList extends React.Component {
               </div>
               <div className='comment-info'>
                 {comment.body}<br/>
-               <span>{comment.time} ago</span>
+              <span>{comment.time} ago&nbsp;{this.renderTrash(comment.user_id, comment.id)}</span>
               </div>
               </li>;
     });

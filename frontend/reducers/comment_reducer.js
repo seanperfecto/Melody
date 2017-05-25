@@ -21,7 +21,7 @@ const commentsReducers = (state = _initialState, action) => {
       newState.comments[action.comment.id] = action.comment;
       return newState;
     case REMOVE_COMMENT:
-      delete newState[action.comment.id];
+      delete newState.comments[action.comment.id];
       return newState;
     case COMMENT_ERRORS:
       return Object.assign(newState, {errors: action.errors});
