@@ -54,15 +54,18 @@ class CommentList extends React.Component {
 
   render(){
     const { comments, errors } = this.props;
-    console.log(this.props);
     let allComments = comments.map((comment, idx) => {
       return <li className='comment-item' key={idx}>
-              <img src={comment.user_pic} alt="profilepic" />
-                <div>
-                  {comment.user_username}
-                  {comment.body}
-                  {comment.time} ago
-                </div>
+              <div>
+                <Link to={`/user/${comment.user_id}`}>
+                  <img src={comment.user_pic} alt="profilepic" /><br/>
+                  <h6>{comment.user_username}</h6>
+                </Link>
+              </div>
+              <div className='comment-info'>
+                {comment.body}<br/>
+               <span>{comment.time} ago</span>
+              </div>
               </li>;
     });
     if (allComments.length === 0) {
@@ -73,10 +76,10 @@ class CommentList extends React.Component {
     }
 
     return(
-      <div>
+      <div className="comment-form-container">
         {this.renderErrors()}
         <form onSubmit={this.submitComment}>
-          <textarea value={this.state.body} onChange={this.updateBody} />
+          <textarea value={this.state.body} onChange={this.updateBody} /><br/>
           <input type='submit' value='Submit Comment' />
         </form>
         <ul className='comment-list'>

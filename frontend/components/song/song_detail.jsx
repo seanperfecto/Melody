@@ -92,8 +92,10 @@ class SongDetail extends React.Component {
           </div>
         </section>
         <hr />
-        Comments<br />
-      <CommentContainer songId={song.id}/>
+        <div className="comment-container">
+          <h1>Comments</h1><br />
+          <CommentContainer songId={song.id}/>
+        </div>
       </div>
     );
   }
