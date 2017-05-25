@@ -6,7 +6,7 @@ import { RECEIVE_COMMENT,
          CLEAR_COMMENTS } from '../actions/comment_actions';
 
 const _initialState = {
-  comments: null,
+  comments: '',
   errors: []
 };
 
@@ -18,8 +18,7 @@ const commentsReducers = (state = _initialState, action) => {
     case RECEIVE_COMMENTS:
       return action.comments;
     case RECEIVE_COMMENT:
-      const newComment = {[action.comment.id]: action.comment};
-      return Object.assign(newState, {comments: newComment});
+      return Object.assign(newState, {comments: action.comment});
     case REMOVE_COMMENT:
       delete newState[action.comment.id];
       return newState;

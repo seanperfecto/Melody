@@ -7,10 +7,11 @@ export const COMMENT_ERRORS = 'COMMENT_ERRORS';
 export const CLEAR_COMMENT_ERRORS = 'CLEAR_COMMENT_ERRORS';
 export const CLEAR_COMMENTS = 'CLEAR_COMMENTS';
 
-export const receiveComment = comment => ({
+export const receiveComment = comment => {
+ return {
   type: RECEIVE_COMMENT,
   comment
-});
+};};
 
 export const receiveComments = comments => ({
   type: RECEIVE_COMMENTS,

@@ -2,7 +2,10 @@ import values from 'lodash/values';
 
 export const allSongs = (state) => values(state.songs.songs);
 export const allSongsByUser = (state) => values(state);
-export const allCommentsBySong = (state) => values(state);
+export const allCommentsBySong = (state) => {
+  const commentArray = values(state);
+  return commentArray.reverse();
+};
 export const randomEightSongs = (state) => {
     const listSongs = values(state.songs.songs);
     const randSongs = listSongs.sort( () => {

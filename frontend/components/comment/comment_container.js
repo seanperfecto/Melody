@@ -9,7 +9,8 @@ import { allCommentsBySong } from '../../reducers/selectors';
 const mapStateToProps = (state, ownProps) => ({
   comments: allCommentsBySong(state.comments),
   errors: state.comments.errors,
-  songId: ownProps.songId
+  songId: ownProps.songId,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
