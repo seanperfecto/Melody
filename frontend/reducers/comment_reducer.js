@@ -16,9 +16,10 @@ const commentsReducers = (state = _initialState, action) => {
 
   switch (action.type) {
     case RECEIVE_COMMENTS:
-      return action.comments;
+      return Object.assign(newState, {comments: action.comments});
     case RECEIVE_COMMENT:
-      return Object.assign(newState, {comments: action.comment});
+      newState.comments[action.comment.id] = action.comment;
+      return newState;
     case REMOVE_COMMENT:
       delete newState[action.comment.id];
       return newState;

@@ -6,12 +6,14 @@ import { createComment, deleteComment,
          clearCommentErrors } from '../../actions/comment_actions';
 import { allCommentsBySong } from '../../reducers/selectors';
 
-const mapStateToProps = (state, ownProps) => ({
-  comments: allCommentsBySong(state.comments),
+const mapStateToProps = (state, ownProps) => {
+ return {
+  comments: allCommentsBySong(state.comments.comments),
   errors: state.comments.errors,
   songId: ownProps.songId,
   currentUser: state.session.currentUser
-});
+};
+};
 
 const mapDispatchToProps = dispatch => ({
   createComment: comment => dispatch(createComment(comment)),

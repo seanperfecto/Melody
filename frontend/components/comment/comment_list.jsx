@@ -9,6 +9,7 @@ class CommentList extends React.Component {
 
     this.submitComment = this.submitComment.bind(this);
     this.updateBody = this.updateBody.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidMount(){
@@ -19,6 +20,7 @@ class CommentList extends React.Component {
 
   componentWillUnmount(){
     this.props.clearComments();
+    this.props.clearCommentErrors();
   }
 
   updateBody(e){
@@ -28,23 +30,38 @@ class CommentList extends React.Component {
   submitComment(e){
     e.preventDefault();
     if (this.props.currentUser) {
-      this.props.createComment({comment: this.state});
+      this.props.createComment({comment: this.state})
+        .then(this.props.clearCommentErrors())
+        .then(()=> {
+          this.setState({body: ''});
+        });
     } else {
       window.globalOpenModal();
     }
 
   }
 
+  renderErrors() {
+  return(
+    <ul>
+      {this.props.errors.map((error, idx) => (
+        <li key={`${idx}`}>{error}</li>
+      ))}
+    </ul>
+  );
+  }
+
+
   render(){
-    const { comments } = this.props;
-    console.log(comments);
+    const { comments, errors } = this.props;
+    console.log(this.props);
     let allComments = comments.map((comment, idx) => {
-      return <li key={idx}>
+      return <li className='comment-item' key={idx}>
               <img src={comment.user_pic} alt="profilepic" />
                 <div>
                   {comment.user_username}
                   {comment.body}
-                  {comment.time}
+                  {comment.time} ago
                 </div>
               </li>;
     });
@@ -54,8 +71,10 @@ class CommentList extends React.Component {
           alt='melody_bw_logo' />
       </div>;
     }
+
     return(
       <div>
+        {this.renderErrors()}
         <form onSubmit={this.submitComment}>
           <textarea value={this.state.body} onChange={this.updateBody} />
           <input type='submit' value='Submit Comment' />
