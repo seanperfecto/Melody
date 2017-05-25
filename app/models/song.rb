@@ -11,4 +11,5 @@ class Song < ApplicationRecord
   validates_with AttachmentSizeValidator, attributes: :track, less_than: 50.megabytes
 
   belongs_to :user
+  has_many :comments
 end
