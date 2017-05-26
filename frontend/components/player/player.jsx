@@ -65,6 +65,8 @@ class Player extends React.Component {
   next(){
     let { songs } = this.props;
     this.loadSong(songs[(songs.length + this.props.songIndex + 1) % songs.length]);
+    this.setState({currentTime: 0.001, paused: false});
+    this.start();
   }
 
   loadSong(song){
@@ -111,7 +113,7 @@ class Player extends React.Component {
         ref={(element) => { this.rap = element; }}
         onPlay={this.start}
         onPause={this.pause}
-        onEnd={this.next}
+        onEnded={this.next}
         src={song.track_url}
         autoPlay
         />
@@ -154,6 +156,7 @@ class Player extends React.Component {
           </div>
         </div>;
     }
+    console.log(this.state.currentTime);
     return(
       <div>
         { audioPlayerContainer }
