@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     get 'user/:id/songs', to: 'songs#user_songs'
     get 'song/:id/comments', to: 'comments#song_comments'
+    get 'likedsongs', to: 'songs#current_user_liked_songs'
   end
   root 'static_pages#root'
 end

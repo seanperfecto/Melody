@@ -10,6 +10,7 @@ import SongDetailContainer from './song/song_detail_container';
 import { FooterInfo } from './footer/footer_info';
 import PlayerContainer from './player/player_container';
 import UserContainer from './user/user_container';
+import LikedSongsContainer from './song/liked_songs_container';
 
 const App = () => (
   <div className='app'>
@@ -23,6 +24,7 @@ const App = () => (
       <Route exact path="/" component={ HeroHeader } />
       <Route exact path="/" component={ SplashPageContainer }  />
       <Route exact path="/discover" component={ DiscoverContainer }  />
+      <Route exact path="/likedsongs" component={ LikedSongsContainer }  />
       <Route exact path="/song/:songId" component={ SongDetailContainer }  />
       <Route exact path="/user/:userId" component={ UserContainer }  />
     </div>

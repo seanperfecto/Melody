@@ -47,6 +47,12 @@ class Api::SongsController < ApplicationController
     render :index
   end
 
+  def current_user_liked_songs
+    @user = current_user
+    @songs = @user.liked_songs
+    render :index
+  end
+
   private
 
   def song_params

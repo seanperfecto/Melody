@@ -5,15 +5,31 @@
   margin: 0 auto;
 }
 
+.discover-page a {
+  text-decoration: none;
+}
+
 .discover-detail {
   margin: 20px 15px;
   width: 240px;
 }
 
+.selected h1 {
+  color: #DB5555 !important;
+}
+
 .discover-page h1 {
   font-size: 48px;
   font-family: 'Permanent Marker', cursive;
-  color: #DB5555;
+  color: #111111;
+  display: inline-block;
+}
+
+
+#liked-songs {
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid black;
 }
 
 .discover-page p {

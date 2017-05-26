@@ -99,3 +99,9 @@ export const deleteLike = songId => dispatch => (
     dispatch(removeLikeToSong(songId))
   ))
 );
+
+export const fetchLikedSongsByUser = () => dispatch => (
+  UserApiUtil.fetchLikedSongsByUser().then(songs=> (
+    dispatch(receiveSongs(songs))
+  ))
+);

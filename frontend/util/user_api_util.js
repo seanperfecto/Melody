@@ -21,3 +21,10 @@ export const updateUser = (userId, formData) => (
     data: formData
   })
 );
+
+export const fetchLikedSongsByUser = () => (
+  $.ajax({
+    method: 'get',
+    url: `/api/likedsongs`
+  })
+);
