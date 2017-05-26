@@ -1,5 +1,5 @@
 import { RECEIVE_USER, USER_ERRORS, RECEIVE_USER_SONGS } from '../actions/user_actions';
-import { ADD_LIKE_TO_SONG, REMOVE_LIKE_TO_SONG } from '../actions/user_actions';
+import { ADD_LIKE_TO_SONG, REMOVE_LIKE_TO_SONG } from '../actions/song_actions';
 
 const _initialState = {
  user: null,
@@ -20,6 +20,16 @@ const userReducer = (state = _initialState, action) => {
     case RECEIVE_USER_SONGS:
       const songs = {songs: action.songs};
       return Object.assign(nextState, songs);
+    case ADD_LIKE_TO_SONG:
+      if (state.songs[action.id]) {
+        nextState.songs[action.id].liked = true;
+        return nextState;
+      }
+    case REMOVE_LIKE_TO_SONG:
+      if (state.songs[action.id]) {
+        nextState.songs[action.id].liked = false;
+        return nextState;
+      }
     default:
       return state;
   }
