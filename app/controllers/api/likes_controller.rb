@@ -1,14 +1,23 @@
 class Api::LikesController < ApplicationController
 
   def create
-    @like = Like.create(user_id: current_user.id, song_id: params[:song_id])
-    @song = Song.find_by(id: params[:song_id])
+    @like = Like.new(like_params)
+    @like.user_id = current_user.id
+    @like.save
+    @song = Song.find_by(id: params[:like][:song_id])
     render '/api/songs/show'
   end
 
   def destroy
-    @like = Like.find_by(song_id: params[:song_id]).where(user_id: current_user.id)
+    @like = Like.find_by(song_id: params[:like][:song_id],
+                         user_id: current_user.id)
     @like.destroy
+    @song = Song.find_by(id: params[:like][:song_id])
     render '/api/songs/show'
+  end
+
+  private
+  def like_params
+    params.require(:like).permit(:song_id)
   end
 end

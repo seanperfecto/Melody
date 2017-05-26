@@ -21,7 +21,7 @@ const songsReducer = (state = _initialState, action) => {
       return nextState;
     case ADD_LIKE_TO_SONG:
       nextState = Object.assign({}, state);
-      nextState.song[action.id].liked = true;
+      nextState.songs[action.id].liked = true;
       return nextState;
     case REMOVE_LIKE_TO_SONG:
       nextState = Object.assign({}, state);

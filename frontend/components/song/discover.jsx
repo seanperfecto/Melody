@@ -28,7 +28,6 @@ class Discover extends React.Component {
         createLike={this.props.createLike}
         deleteLike={this.props.deleteLike} />));
     }
-    console.log(this.props.songs);
     return(
       <div className='discover-page'>
         <h1>Discover</h1>
