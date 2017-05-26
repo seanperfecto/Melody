@@ -69,6 +69,7 @@ class SongForm extends React.Component {
 
     if (this.props.type === "upload") {
       this.props.createSong(formData)
+      .fail(this.setState({loading: false}))
       .then(this.setState({loading: true}))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);

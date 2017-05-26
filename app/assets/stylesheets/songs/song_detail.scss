@@ -94,19 +94,15 @@ hr {
 }
 
 .song-detail-container button {
-  text-decoration: none;
-  background-color: transparent;
-  color: #11111;
+  background-color: #DB5555;
+  border: 0;
+  padding: 7px 30px;
+  color: #E3E5E1;
+  font-size: 14px;
+  font-weight: 300;
   cursor: pointer;
-  padding: 5px;
-  border: 1px solid #CF9090;
-  font-size: 12px;
-  margin: 5px 0;
-  max-width: 155px;
-}
-
-.song-detail-container button:hover {
-  color: #6b6b6b;
+  margin-bottom: 15px;
+  width: 257px;
 }
 
 #edit-button {

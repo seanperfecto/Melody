@@ -163,7 +163,6 @@ class UserDetail extends React.Component {
                 { editBox }
 
               </div>
-              { followButton }
               <div className='user-detail-cov-pic-container'>
                 <img className="user-detail-cover-pic" src={coverpic}
                   alt="coverpic" />
@@ -190,3 +189,4 @@ class UserDetail extends React.Component {
 }
 
 export default UserDetail;
+// { followButton } for later use

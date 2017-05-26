@@ -29,6 +29,9 @@ class NavBar extends React.Component {
           <Link to={`/user/${this.props.currentUser.id}`}>
           <button className="header-button">
             {this.props.currentUser.username}</button></Link>
+          <Link to={`/discover`}>
+          <button className="header-button">
+            Discover</button></Link>
           <UploadModal clearSongErrors={this.props.clearSongErrors}
             user={this.props.currentUser.id}
             type="upload"/>
