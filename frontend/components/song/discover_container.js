@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Discover from './discover';
 
-import { fetchSongs } from '../../actions/song_actions';
+import { fetchSongs, createLike, deleteLike } from '../../actions/song_actions';
 import { playPauseSong } from '../../actions/player_actions';
 import { allSongs } from '../../reducers/selectors';
 
@@ -17,6 +17,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   fetchSongs: () => dispatch(fetchSongs()),
   playPauseSong: song => dispatch(playPauseSong(song)),
+  createLike: songId => dispatch(createLike(songId)),
+  deleteLike: songId => dispatch(deleteLike(songId))
 });
 
 export default connect(

@@ -69,7 +69,6 @@ class SongDetail extends React.Component {
     else {
       playPause = <h2>P L A Y <i className="fa fa-play-circle-o"></i></h2>;
     }
-    console.log(this.props);
     return (
       <div>
         <div className="header-bg"></div>

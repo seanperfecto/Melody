@@ -1,11 +1,14 @@
 import * as SongApiUtil from '../util/song_api_util';
 import * as UserApiUtil from '../util/user_api_util';
+import * as LikeApiUtil from '../util/like_api_util';
 
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const REMOVE_SONG = 'REMOVE_SONG';
 export const SONG_ERRORS = 'SONG-ERRORS';
 export const CLEAR_SONG_ERRORS = 'CLEAR_SONG_ERRORS';
+export const ADD_LIKE_TO_SONG = 'ADD_LIKE_TO_SONG';
+export const REMOVE_LIKE_TO_SONG = 'REMOVE_LIKE_TO_SONG';
 
 // sync actions
 export const receiveSongs = songs => ({
@@ -33,6 +36,16 @@ export const songErrors = errors => {
 export const clearSongErrors = () => ({
   type: CLEAR_SONG_ERRORS,
   errors: []
+});
+
+export const addLikeToSong = (id) => ({
+  type: ADD_LIKE_TO_SONG,
+  id
+});
+
+export const removeLikeToSong = (id) => ({
+  type: REMOVE_LIKE_TO_SONG,
+  id
 });
 
 // async actions
@@ -73,3 +86,16 @@ export const fetchPlayerSongsByUser = id => dispatch => {
     dispatch(receiveSongs(songs))
   ));
 };
+
+export const createLike = songId => dispatch => (
+  LikeApiUtil.createLike(songId).then(() => (
+    dispatch(addLikeToSong(songId)))
+  )
+);
+
+
+export const deleteLike = songId => dispatch => (
+  LikeApiUtil.deleteLike(songId).then(() => (
+    dispatch(removeLikeToSong(songId))
+  ))
+);

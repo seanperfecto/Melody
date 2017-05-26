@@ -1,7 +1,7 @@
 import { RECEIVE_SONGS,
          REMOVE_SONG,
-         SONG_ERRORS,
-         CLEAR_SONG_ERRORS } from '../actions/song_actions';
+         ADD_LIKE_TO_SONG,
+         REMOVE_LIKE_TO_SONG } from '../actions/song_actions';
 
 const _initialState = {
  songs: null,
@@ -19,9 +19,24 @@ const songsReducer = (state = _initialState, action) => {
       nextState = Object.assign({}, state);
       delete nextState[action.song.id];
       return nextState;
+    case ADD_LIKE_TO_SONG:
+      nextState = Object.assign({}, state);
+      nextState.song[action.id].liked = true;
+      return nextState;
+    case REMOVE_LIKE_TO_SONG:
+      nextState = Object.assign({}, state);
+      nextState.songs[action.id].liked = false;
+      return nextState;
     default:
       return state;
   }
 };
 
 export default songsReducer;
+
+// case ADD_LIKE_TO_SONG:
+//   nextState.songs[action.id].liked = true;
+//   return nextState;
+// case REMOVE_LIKE_TO_SONG:
+//   nextState.songs[action.id].liked = false;
+//   return nextState;

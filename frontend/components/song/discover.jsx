@@ -24,9 +24,11 @@ class Discover extends React.Component {
     songList = songs.map((song, idx) =>
       (<DiscoverDetail key={idx} song={song}
         playPauseSong={this.props.playPauseSong}
-        player={this.props.player} />));
+        player={this.props.player}
+        createLike={this.props.createLike}
+        deleteLike={this.props.deleteLike} />));
     }
-
+    console.log(this.props.songs);
     return(
       <div className='discover-page'>
         <h1>Discover</h1>

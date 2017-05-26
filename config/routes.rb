@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :songs, except: [:new, :edit]
     resources :comments, only: [:index, :show, :create, :update, :destroy]
+    resources :likes, only: [:create, :destroy]
     get 'user/:id/songs', to: 'songs#user_songs'
     get 'song/:id/comments', to: 'comments#song_comments'
   end
