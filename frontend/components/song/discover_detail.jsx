@@ -45,10 +45,10 @@ class DiscoverDetail extends React.Component {
           { song.title }</Link><br />
         <Link className="discover-artist" to={`/user/${song.user_id}`}>
           { song.user.username }</Link><br />
-        <div onClick={()=>this.props.createLike(song.id)}>LIKE</div>
       </li>
     );
   }
 }
 
 export default DiscoverDetail;
+// <div onClick={()=>this.props.createLike(song.id)}>LIKE</div>
