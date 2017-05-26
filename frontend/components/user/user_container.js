@@ -3,6 +3,7 @@ import UserDetail from './user_detail';
 
 import { fetchSongsByUser, fetchUser, updateUser,
          receiveNullUser, clearUserSongs } from '../../actions/user_actions';
+import { createLike, deleteLike } from '../../actions/song_actions';
 import { playPauseSong } from '../../actions/player_actions';
 import { allSongsByUser } from '../../reducers/selectors';
 
@@ -22,7 +23,9 @@ const mapDispatchToProps = dispatch => ({
   fetchSongsByUser: (id) => dispatch(fetchSongsByUser(id)),
   playPauseSong: (song) => dispatch(playPauseSong(song)),
   receiveNullUser: () => dispatch(receiveNullUser()),
-  clearUserSongs: () => dispatch(clearUserSongs())
+  clearUserSongs: () => dispatch(clearUserSongs()),
+  createLike: id => dispatch(createLike(id)),
+  deleteLike: id => dispatch(deleteLike(id))
 });
 
 export default connect(

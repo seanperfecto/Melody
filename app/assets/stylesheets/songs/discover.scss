@@ -113,6 +113,32 @@ a.discover-artist:hover {
   cursor: pointer;
 }
 
+.hidden-like-button i {
+  display: none;
+  font-size: 30px;
+}
+
+.heart-like, .heart-dislike {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.discover-detail-container:hover .heart-like  {
+  display: block;
+  color: white;
+  z-index: 1;
+}
+
+.discover-detail-container:hover .heart-dislike  {
+  display: block;
+  color: #DB5555;
+  z-index: 1;
+}
+
+
 .discover-detail-container:hover img {
   -webkit-filter: brightness(70%) blur(2px);
     filter: brightness(70%) blur(2px);

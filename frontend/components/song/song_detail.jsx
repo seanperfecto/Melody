@@ -69,6 +69,16 @@ class SongDetail extends React.Component {
     else {
       playPause = <h2>P L A Y <i className="fa fa-play-circle-o"></i></h2>;
     }
+
+    let heart;
+    if (song.liked) {
+      heart = <h2 onClick={()=>this.props.deleteLike(song.id)}>
+        L I K E D <i className="fa fa-heart-o"></i></h2>;
+    } else {
+      heart = <h2 onClick={()=>this.props.createLike(song.id)}>
+        L I K E <i className="fa fa-heart-o"></i></h2>;
+    }
+    console.log(song);
     return (
       <div>
         <div className="header-bg"></div>
@@ -85,6 +95,9 @@ class SongDetail extends React.Component {
                 <div className="details-play-pause"
                   onClick={this.playPauseSong}>
                   { playPause }
+                </div>
+                <div id="heart" className="details-play-pause">
+                  { heart }
                 </div>
               <br />
               { editButton }

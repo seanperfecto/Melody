@@ -1,7 +1,7 @@
 json.extract! song, :title, :description, :id, :user_id
 json.time time_ago_in_words(song.created_at)
 if current_user
-  json.liked current_user.likes.include?(song)
+  json.liked current_user.likes.any?{|like| like.song_id == song.id}
 else
   json.liked false
 end

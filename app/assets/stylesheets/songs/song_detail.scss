@@ -84,8 +84,13 @@
 
 .song-detail-info h2 {
   font-family: 'Oswald', sans-serif;
-  margin: 10px 0;
+  margin: 10px 0 3px 0;
   font-size: 35px;
+}
+
+#heart h2 {
+  margin: 0;
+  font-size: 30px;
 }
 
 hr {

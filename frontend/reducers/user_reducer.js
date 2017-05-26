@@ -1,4 +1,5 @@
 import { RECEIVE_USER, USER_ERRORS, RECEIVE_USER_SONGS } from '../actions/user_actions';
+import { ADD_LIKE_TO_SONG, REMOVE_LIKE_TO_SONG } from '../actions/user_actions';
 
 const _initialState = {
  user: null,
@@ -25,3 +26,14 @@ const userReducer = (state = _initialState, action) => {
 };
 
 export default userReducer;
+
+
+
+
+
+// case ADD_LIKE_TO_SONG:
+// nextState.songs[action.id].liked = true;
+// return nextState;
+// case REMOVE_LIKE_TO_SONG:
+// nextState.songs[action.id].liked = false;
+// return nextState;

@@ -30,12 +30,24 @@ class DiscoverDetail extends React.Component {
     else {
       playPause = <i onClick={this.togglePlay} className="fa fa-fw fa-play" aria-hidden="true"></i>;
     }
-
+    let heart;
+    if (song.liked) {
+      heart =
+        <i onClick={()=>this.props.deleteLike(song.id)}
+          className="fa fa-heart heart-dislike" aria-hidden="true"></i>;
+    } else {
+      heart =
+        <i onClick={()=>this.props.createLike(song.id)}
+          className="fa fa-heart heart-like" aria-hidden="true"></i>;
+    }
     return(
       <li className="discover-detail">
         <div className='discover-detail-container'>
             <div className='hidden-play-control'>
               { playPause }
+            </div>
+            <div className='hidden-like-button'>
+              { heart }
             </div>
           <Link to={`/song/${song.id}`}>
             <img src={song.image_url} alt={song.title} />
@@ -45,11 +57,11 @@ class DiscoverDetail extends React.Component {
           { song.title }</Link><br />
         <Link className="discover-artist" to={`/user/${song.user_id}`}>
           { song.user.username }</Link><br />
-        <div onClick={()=>this.props.createLike(song.id)}>LIKE</div>
-        <div onClick={()=>this.props.deleteLike(song.id)}>DISLIKE</div>
       </li>
     );
   }
 }
 
 export default DiscoverDetail;
+// <div onClick={()=>this.props.createLike(song.id)}>LIKE</div>
+// <div onClick={()=>this.props.deleteLike(song.id)}>DISLIKE</div>
