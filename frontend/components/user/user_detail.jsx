@@ -137,7 +137,6 @@ class UserDetail extends React.Component {
         if (this.state.editing) {
           editBox = <form onSubmit={this.updateBio}>
                       <textarea
-                        onBlur={()=>this.setState({editing:false, bio: user.bio})}
                         className='edit-textarea' value={this.state.bio}
                         onChange={this.handleChange}/><br/>
                       <input className='edit-submit' type="submit" value="Update Bio" />
