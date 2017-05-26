@@ -42,7 +42,7 @@ class UserDetail extends React.Component {
         this.setState({bio: nextProps.user.user.bio});
         this.props.fetchSongsByUser(parseInt(nextProps.match.params.userId));
       });
-    } 
+    }
   }
 
 
@@ -134,7 +134,9 @@ class UserDetail extends React.Component {
       if (currentUser && currentUser.id === user.id) {
         if (this.state.editing) {
           editBox = <form onSubmit={this.updateBio}>
-                      <textarea className='edit-textarea' value={this.state.bio}
+                      <textarea
+                        onBlur={()=>this.setState({editing:false, bio: user.bio})}
+                        className='edit-textarea' value={this.state.bio}
                         onChange={this.handleChange}/><br/>
                       <input className='edit-submit' type="submit" value="Update Bio" />
                     </form>;

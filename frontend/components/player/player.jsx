@@ -16,7 +16,7 @@ class Player extends React.Component {
     this.loadSong = this.loadSong.bind(this);
 
     this.state = { paused: false, percent: 0, volume: 50,
-                   duration: 0, currentTime: 0, intervalId: '' };
+                   duration: 0, currentTime: 0.0001, intervalId: '' };
   }
 
   componentWillReceiveProps(newProps){
@@ -61,11 +61,10 @@ class Player extends React.Component {
     }
   }
 
-
   next(){
     let { songs } = this.props;
     this.loadSong(songs[(songs.length + this.props.songIndex + 1) % songs.length]);
-    this.setState({currentTime: 0.001, paused: false});
+    this.setState({currentTime: 0.0001, paused: false});
     this.start();
   }
 
@@ -156,7 +155,6 @@ class Player extends React.Component {
           </div>
         </div>;
     }
-    console.log(this.state.currentTime);
     return(
       <div>
         { audioPlayerContainer }

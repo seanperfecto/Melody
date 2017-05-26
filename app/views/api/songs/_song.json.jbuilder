@@ -1,4 +1,5 @@
 json.extract! song, :title, :description, :id, :user_id
+json.time time_ago_in_words(song.created_at)
 json.image_url asset_path(song.image.url)
 json.track_url asset_path(song.track.url)
 

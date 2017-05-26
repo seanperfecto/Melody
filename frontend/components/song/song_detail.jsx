@@ -69,7 +69,7 @@ class SongDetail extends React.Component {
     else {
       playPause = <h2>P L A Y <i className="fa fa-play-circle-o"></i></h2>;
     }
-
+    console.log(this.props);
     return (
       <div>
         <div className="header-bg"></div>
@@ -80,7 +80,9 @@ class SongDetail extends React.Component {
             <div className="song-detail-info">
               <Link to={`/user/${song.user_id}`}>{song.user.username}</Link>
               <h1>{song.title}</h1>
-              <h6>{song.description}</h6>
+              <h6>{song.description}<br/>
+                  <span id="uploaded">Uploaded: {song.time} ago</span>
+              </h6>
                 <div className="details-play-pause"
                   onClick={this.playPauseSong}>
                   { playPause }

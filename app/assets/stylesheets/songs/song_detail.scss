@@ -75,6 +75,11 @@
   font-size: 16px;
   font-weight: 300;
   color: #ffffff;
+  line-height: 1.2;
+}
+#uploaded {
+  color: #c4c4c4;
+  font-size: 12px;
 }
 
 .song-detail-info h2 {
@@ -119,5 +124,5 @@ hr {
 
 .details-play-pause:hover {
   cursor: pointer;
-  color: #c4c4c4;
+  color: #DB5555;
 }
