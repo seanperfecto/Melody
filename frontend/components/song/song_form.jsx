@@ -57,6 +57,7 @@ class SongForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     var formData = new FormData();
+    this.setState({loading: true});
     formData.append("song[title]", this.state.title);
     formData.append("song[description]", this.state.description);
     formData.append("song[user_id]", this.state.user_id);
@@ -69,8 +70,8 @@ class SongForm extends React.Component {
 
     if (this.props.type === "upload") {
       this.props.createSong(formData)
-      .fail(this.setState({loading: false}))
       .then(this.setState({loading: true}))
+      .fail(this.setState({loading: false}))
       .then(data => {
         this.props.history.push(`/song/${data.song.id}`);
       }).then(() => {
