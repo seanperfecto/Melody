@@ -14,9 +14,11 @@ class Player extends React.Component {
     this.updateTime = this.updateTime.bind(this);
     this.changeVol = this.changeVol.bind(this);
     this.loadSong = this.loadSong.bind(this);
+    this.handleSpace = this.handleSpace.bind(this);
 
     this.state = { paused: false, percent: 0, volume: 50,
                    duration: 0, currentTime: 0.0001, intervalId: '' };
+
   }
 
   componentWillReceiveProps(newProps){
@@ -47,6 +49,16 @@ class Player extends React.Component {
         this.props.fetchSongs();
       } else {
         this.props.fetchPlayerSongsByUser(parseInt(this.props.location.pathname.split('/').pop()));
+      }
+    }
+    document.addEventListener("keydown", this.handleSpace);
+  }
+
+  handleSpace(e) {
+    if (this.props.song) {
+      if ((e.keyCode === 32) && (e.target === document.body)) {
+        e.preventDefault();
+        this.togglePlay();
       }
     }
   }
@@ -89,6 +101,7 @@ class Player extends React.Component {
 
   componentWillUnmount(){
     clearInterval(this.state.intervalId);
+    document.addEventListener("keydown", this.handleSpace);
   }
 
   updateTime(){
