@@ -78,7 +78,6 @@ class SongDetail extends React.Component {
       heart = <h2 onClick={()=>this.props.createLike(song.id)}>
         L I K E <i className="fa fa-heart-o"></i></h2>;
     }
-    console.log(song);
     return (
       <div>
         <div className="header-bg"></div>
