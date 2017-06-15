@@ -38,10 +38,12 @@ export const clearSongErrors = () => ({
   errors: []
 });
 
-export const addLikeToSong = (id) => ({
-  type: ADD_LIKE_TO_SONG,
-  id
-});
+export const addLikeToSong = (id) => {
+  return ({
+    type: ADD_LIKE_TO_SONG,
+    id
+  });
+};
 
 export const removeLikeToSong = (id) => ({
   type: REMOVE_LIKE_TO_SONG,

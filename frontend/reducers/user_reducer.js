@@ -21,14 +21,18 @@ const userReducer = (state = _initialState, action) => {
       const songs = {songs: action.songs};
       return Object.assign(nextState, songs);
     case ADD_LIKE_TO_SONG:
-      if (state.songs[action.id]) {
-        nextState.songs[action.id].liked = true;
-        return nextState;
+      if (state.songs) {
+        if (state.songs[action.id]) {
+          nextState.songs[action.id].liked = true;
+          return nextState;
+        }
       }
     case REMOVE_LIKE_TO_SONG:
-      if (state.songs[action.id]) {
-        nextState.songs[action.id].liked = false;
-        return nextState;
+      if (state.songs) {
+        if (state.songs[action.id]) {
+          nextState.songs[action.id].liked = false;
+          return nextState;
+        }
       }
     default:
       return state;
