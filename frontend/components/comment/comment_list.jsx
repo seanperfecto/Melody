@@ -27,6 +27,12 @@ class CommentList extends React.Component {
     this.props.clearCommentErrors();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.songId !== nextProps.match.params.songId) {
+      this.props.clearComments();
+    }
+  }
+
   updateBody(e){
     this.setState({ body: e.target.value });
   }

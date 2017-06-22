@@ -143,10 +143,8 @@ class UserDetail extends React.Component {
                     </form>;
         } else {
           editBox = <div className='edit-bio-container'>
-                        <h5>
-                          <i onClick={this.edit}
-                            className="fa fa-pencil" aria-hidden="true"></i>
-                          &nbsp;&nbsp;{user.bio}</h5>
+                        <h5>{user.bio}<br/>&nbsp;<i onClick={this.edit}
+                            className="fa fa-pencil" aria-hidden="true"></i></h5>
                     </div>;
         }
       } else {

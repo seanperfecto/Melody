@@ -79,7 +79,7 @@ class SongDetail extends React.Component {
           window.globalOpenModal();
         }
       }}>
-        L I K E D <i className="fa fa-heart-o"></i></h2>;
+        L I K E D <i id="song-heart" className="fa fa-heart-o"></i></h2>;
     } else {
       heart = <h2 onClick={()=> {
         if (this.props.currentUser) {
