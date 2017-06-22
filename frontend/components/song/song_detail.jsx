@@ -72,10 +72,22 @@ class SongDetail extends React.Component {
 
     let heart;
     if (song.liked) {
-      heart = <h2 onClick={()=>this.props.deleteLike(song.id)}>
+      heart = <h2 onClick={()=> {
+        if (this.props.currentUser) {
+          this.props.deleteLike(song.id);
+        } else {
+          window.globalOpenModal();
+        }
+      }}>
         L I K E D <i className="fa fa-heart-o"></i></h2>;
     } else {
-      heart = <h2 onClick={()=>this.props.createLike(song.id)}>
+      heart = <h2 onClick={()=> {
+        if (this.props.currentUser) {
+          this.props.createLike(song.id);
+        } else {
+          window.globalOpenModal();
+        }
+      }}>
         L I K E <i className="fa fa-heart-o"></i></h2>;
     }
     return (

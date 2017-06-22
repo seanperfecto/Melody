@@ -37,7 +37,14 @@ class DiscoverDetail extends React.Component {
           className="fa fa-heart heart-dislike" aria-hidden="true"></i>;
     } else {
       heart =
-        <i onClick={()=>this.props.createLike(song.id)}
+        <i onClick={()=> {
+            console.log(this.props.currentUser);
+          if (this.props.currentUser) {
+            this.props.createLike(song.id);
+          } else {
+            window.globalOpenModal();
+          }
+        }}
           className="fa fa-heart heart-like" aria-hidden="true"></i>;
     }
     return(
