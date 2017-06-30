@@ -38,7 +38,6 @@ class DiscoverDetail extends React.Component {
     } else {
       heart =
         <i onClick={()=> {
-            console.log(this.props.currentUser);
           if (this.props.currentUser) {
             this.props.createLike(song.id);
           } else {
