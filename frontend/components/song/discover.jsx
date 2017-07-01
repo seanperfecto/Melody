@@ -27,7 +27,8 @@ class Discover extends React.Component {
         playPauseSong={this.props.playPauseSong}
         player={this.props.player}
         createLike={this.props.createLike}
-        deleteLike={this.props.deleteLike} />));
+        deleteLike={this.props.deleteLike}
+        currentUser={this.props.currentUser} />));
     }
     if (this.props.currentUser) {
       likedSongs = <NavLink activeClassName="selected"
