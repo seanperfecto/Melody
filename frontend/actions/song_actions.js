@@ -89,11 +89,11 @@ export const fetchPlayerSongsByUser = id => dispatch => {
   ));
 };
 
-export const createLike = songId => dispatch => (
-  LikeApiUtil.createLike(songId).then(() => (
+export const createLike = songId => dispatch => {
+  return LikeApiUtil.createLike(songId).then(() => (
     dispatch(addLikeToSong(songId)))
-  )
-);
+  );
+};
 
 
 export const deleteLike = songId => dispatch => (

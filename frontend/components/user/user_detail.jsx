@@ -122,7 +122,8 @@ class UserDetail extends React.Component {
         playPauseSong={this.props.playPauseSong}
         player={this.props.player}
         createLike={this.props.createLike}
-        deleteLike={this.props.deleteLike} />));
+        deleteLike={this.props.deleteLike}
+        currentUser={this.props.currentUser} />));
       } else {
         songList = <div className='no-songs'><h3>{user.username} has no songs.</h3>
         <img src='http://res.cloudinary.com/dqr2mejhc/image/upload/c_scale,w_149/v1495683419/melody_logo_bw_yeybpv.png'
