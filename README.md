@@ -1,6 +1,6 @@
 # Melody
 
-[Melody Live Link](http://www.melody.audio)
+[Melody Live Link](https://melodymusic.herokuapp.com/)
 
 A simply beautiful and powerful app for the music lover out there, Melody, inspired by the functionalities of Soundcloud, is a full stack application that allows song management.
 
